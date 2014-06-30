@@ -1,0 +1,58 @@
+箱包节模板
+<li class="mbb">
+	<div class="pic">
+		<a href="http://www.mbaobao.com/item/#" target="_blank"><img src="http://placehold.it/234x280" /></a>
+	</div> 
+	<div class="name">
+	    摩登绅士的魅力修行
+	</div> 
+	<div class="inf">
+		<ul>
+		   <li class="price">
+		   	   <small>￥</small>229
+		   </li>
+		   <li class="favo">
+		   	   <div class="f-1">2.0折</div>
+		   	   <div class="f-2">
+		   	   	  <del>￥1159</del>
+		   	   </div>
+		   </li>
+		   <li class="go">
+		   	   <a href="http://cart.mbaobao.com/do/items/add/#/1.html" target="_blank"><i>立即抢购</i></a>
+		   </li>
+		</ul>
+	</div> 
+</li>
+
+
+<li>
+	<div class="pic">
+		<a href="http://www.mbaobao.com/item/{{sku_id}}" target="_blank">
+			<img src="{{_image}}" width="228" height="228" />
+		</a>
+	</div>
+	<ul class="inf">
+		<li >
+			<span class="name">{{cutSeries _name}}</span> <del class="price">￥{{market_price}}</del>
+		</li>
+		<li>
+			<span class="dis">{{discount  promotion_price market_price  1}}折</span>
+			<span class="price_"> <i>￥</i>
+				{{promotion_price}}
+			</span>
+		</li>
+		<li>
+			<a href="http://cart.mbaobao.com/do/items/add/{{sku_id}}/1.html" target="_blank">
+				<img src="http://cca.mbaobao.com/mkts/201402/25/mother/01/banner_16.jpg" />
+			</a>
+		</li>
+	</ul>
+</li>
+
+母亲节模板测试2
+
+cutSeries  截取系列
+
+discount 计算打折
+
+
