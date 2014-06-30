@@ -1,0 +1,57 @@
+商品sku显示-----shu排序
+输入sku--排序(删除)--生成sku
+输入:
+sku       item_sku
+排序状态  item_state
+列数      item_lists
+
+按钮：
+排序      state_button
+生成sku   sku_button  
+
+输出：
+新SKU    new_sku
+
+状态：    item_bar
+商品个数  item_count
+
+
+商品data数据-----数据保存
+输入sku(输入data)--信息展示--确认信息--保存（使用）
+输入：
+输入类型      item_type
+sku           item_sku
+data数据      item_data
+图片尺寸      item_size
+排序状态      item_state
+
+输出：
+输出信息使用原有名字
+
+按钮：
+信息选择      data_select
+信息显示      data_show
+信息保存      data_save
+
+
+商品sku显示-----模板使用
+使用data(只支持本机确认过的信息)--确认信息--选择模板(带输入)--修改--生成模板
+输入：
+输入style     template_style
+输入template  template_handlebars
+输入模板备注  template_handlebars
+输入保存模板  template_data
+
+输出：
+商品显示  out_item
+输出sku   out_sku
+输出html  out_html
+   
+按钮：
+应用模板样式   template_start        
+模板选择       template_choose
+输入自己模板   template_new
+模板保存       template_save
+模板删除       template_remove
+
+注意：

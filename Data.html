@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>数据</title>
+	<link  href="css/reset.css"  rel="stylesheet" type="text/css" />
+	<link  href="css/dbstyle.css"  rel="stylesheet" type="text/css" />
+	<link  href="css/data.css"  rel="stylesheet" type="text/css" />
+	<script src="seajs/sea-debug_2.1.1.js"></script>
+	<script src="seajs/config_2.1.js"></script>
+    <!--easyui-->
+	<link  href="css/easyui.css"  rel="stylesheet" type="text/css" />
+	<link  href="css/icon.css"  rel="stylesheet" type="text/css" />
+	<script src="js/jquery.min.js"></script> 
+	<script src="js/jquery.easyui.min.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.edatagrid.js"></script>
+  <script type="text/javascript" src="./js/datagrid-dnd.js"></script>
+</head>
+<body>
+
+<!--导航-->
+<div id="navigation">
+  <ul>
+    <li><a href="./Sort.html" class="button button-rounded button-flat-primary">排序</a>
+    </li>
+    <li class="select"><a href="./Data.html" class="button button-rounded button-flat-primary">数据</a>
+    </li>
+    <li><a href="./template.html" class="button button-rounded button-flat-primary">模板</a>
+    </li>
+    <li><a href="" class="button button-rounded button-flat-primary">备用</a>
+    </li>
+  </ul>
+</div>
+<!--导航-->
+
+   <div class="mbb_data">	
+      <!--信息输入-->
+      <div class="data_input clearfix">
+                  <span style="width:100%;float:left;">
+                        <ul class="data_input_option">
+                              <li><a href="#tab_01" data-type="sku">SKU</a></li>
+                              <li><a href="#tab_02" data-type="data">DATA</a></li>
+                              <li><a href="#tab_03" data-type="port">PORT</a></li>
+                        </ul>
+                        <ul class="data_input_en">
+                              <li id="tab_01" ><textarea id="item_sku"  placeholder="输入SKU" autofocus="autofocus" ></textarea>
+                                    <span style="width:30%;float:right;">
+                                    <select id="item_size">
+                                    <option value ="24">24*24</option>
+                                    <option value ="35">35*35</option>
+                                    <option value ="40">40*40</option>
+                                    <option value ="60">60*60</option>
+                                    <option value ="80">80*80</option>
+                                    <option value ="88">88*88</option>
+                                    <option value ="100">100*100</option>
+                                    <option value ="145">145*145</option>
+                                    <option value ="160">160*160</option>
+                                    <option value ="174" selected="selected">174*174</option>
+                                    <option value ="185">185*185</option>
+                                    <option value ="238">238*238</option>
+                                    <option value ="320">320*320</option>
+                                    <option value ="420">420*420</option>
+                                    <option value ="480">480*480</option>
+                                    <option value ="1024">1024*1024</option>
+                                    </select>
+                                    <select id="item_state">
+                                    <option value ="true" selected="selected">全部商品排序</option>
+                                    <option value ="false">不包括下架和预售</option>
+                                    </select>
+                                    </span>
+                              </li>
+                              <li id="tab_02"  style="display:none"><textarea id="item_data"  placeholder="输入DATA" ></textarea>
+                                  <span style="width:30%;float:right;">
+                                     <select id="data_select">
+                                         <option value ="null" elected="selected">使用已保存数据-O(∩_∩)O</option>
+                                     </select> 
+                                  </span>  
+                              </li>
+                              <li id="tab_03"  style="display:none"><textarea id="item_port"  placeholder="输入接口" ></textarea>
+                                  <span style="width:30%;float:right;">
+                                     
+                                  </span>  
+                              </li>
+                        </ul>
+                  </span>
+      		     		
+      		<button id="data_show" type="submit" value="数据生成" class="button button-rounded button-flat-action" >数据生成</button>
+      </div>
+      	
+      <!--数据生成-->
+      <div class="data_goods">
+           <table id="data" title="Mbb-Data" style="width:850px;" toolbar="#toolbar" rownumbers="true" pagination="true"  idField="id" remoteSort="false" data-options="
+           singleSelect:true,data:data,
+           onLoadSuccess:function(){$(this).datagrid('enableDnd');}">
+               <thead>
+                  <tr>
+                    <th field="brand_name" width="50" editor="text">品牌</th>
+                    <th field="_category_name" width="60" editor="text">类型</th>
+                    <th field="_name" width="160" editor="text">名称</th>
+                    <th field="sku_id" width="80" editor="{type:'numberbox',options:{required:true}}">skuID</th>
+                    <th field="promotion_price" width="60" sortable="true" editor="numberbox">优惠价</th>
+                    <th field="sale_price" width="60" editor="numberbox" sortable="true">麦包价</th>
+                    <th field="market_price" width="60" editor="numberbox" sortable="true">专柜价</th>
+                    <th field="is_presell" width="50" editor="text" >预售</th>
+                    <th field="stock_qty" width="50" sortable="true" editor="numberbox">剩余</th>
+                    <th field="_image" width="50" editor="text">图片</th>
+                    <th field="price_title" width="50" editor="text">价格信息</th>
+                    <th field="prom_title" width="50" editor="text">优惠信息</th>
+                  </tr>   
+               </thead>                 
+           </table>
+      </div>	
+
+      <!--数据处理-->
+      <div class="data_deal">
+      	   <a href="#" id="data_save" class="button button-rounded button-flat-highlight">数据保存</a>
+      </div>
+      	
+   </div>
+
+
+<script type="text/javascript">
+var data_=[];
+$(function(){
+    $('#data').edatagrid({
+          toolbar: [{
+            iconCls: 'icon-add',
+            handler: function(){$('#data').edatagrid('addRow')}
+          },'-',{
+            iconCls: 'icon-remove',
+            handler: function(){$('#data').edatagrid('destroyRow')}
+          },'-',{
+            iconCls: 'icon-save',
+            handler: function(){$('#data').edatagrid('saveRow')}
+          }],
+        data:data_  
+    });       
+});
+function DataGrid(data_){
+    $('#data').edatagrid({
+          toolbar: [{
+            iconCls: 'icon-add',
+            handler: function(){$('#data').edatagrid('addRow')}
+          },'-',{
+            iconCls: 'icon-remove',
+            handler: function(){$('#data').edatagrid('destroyRow')}
+          },'-',{
+            iconCls: 'icon-save',
+            handler: function(){$('#data').edatagrid('saveRow')}
+          }],     
+      data:data_
+    }); 
+} 
+</script>
+
+<script type="text/javascript">
+$("#data_save").click(function(){
+
+})  
+</script>
+
+
+
+<script type="text/javascript">
+seajs.use("./js/item/data.js",function(){})            
+</script>   
+	
+</body>
+</html>
