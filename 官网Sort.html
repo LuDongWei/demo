@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>排序</title>
+  <link  href="http://cca.mbaobao.com/mkts/201410/11/sort/css/reset.css"  rel="stylesheet" type="text/css" />
+  <link  href="http://cca.mbaobao.com/mkts/201410/11/sort/css/dbstyle.css"  rel="stylesheet" type="text/css" />
+  <link  href="./css/sort.css"  rel="stylesheet" type="text/css" />
+  <script src="http://cca.mbaobao.com/mkts/201410/11/sort/seajs/sea-debug_2.1.1.js"></script>
+  <script src="http://cca.mbaobao.com/mkts/201410/11/sort/seajs/mbb-config_2.1.js?2014"></script>
+  
+  <script src="http://cca.mbaobao.com/mkts/201410/11/sort/js/jquery.min.js"></script> 
+  <script src="http://cca.mbaobao.com/mkts/201410/11/sort/js/jquery-ui.min.js"></script>
+</head>
+<body>
+
+<!--导航-->
+<!-- <div id="navigation">
+  <ul>
+    <li class="select"><a href="./Sort.html" class="button button-rounded button-flat-primary">排序</a>
+    </li>
+    <li><a href="./Data.html" class="button button-rounded button-flat-primary">数据</a>
+    </li>
+    <li><a href="./template.html" class="button button-rounded button-flat-primary">模板</a>
+    </li>
+    <li><a href="" class="button button-rounded button-flat-primary">备用</a>
+    </li>
+  </ul>
+</div> -->
+<!--导航-->
+
+  <div class="mbb_sort">
+    <!--信息输入-->
+    <div class="sort_input clearfix">
+        <span style="width:70%;float:left;">
+          <textarea id="item_sku"    placeholder="输入SKU" autofocus="autofocus" ></textarea>
+        </span>
+        <span style="width:30%;float:left;">
+          <input placeholder="列数默认（4）" id="item_lists" name="item_lists" >
+          <select id="item_state" name="item_state">
+            <option value ="true" selected="selected">全部商品排序</option>
+            <option value ="false">不包括下架和预售</option>
+            
+            <option value ="true|1">不包括预售</option> 
+            <option value ="true|2">不包括下架</option>
+          </select>
+        </span>
+        <button id="state_button" class="button button-rounded button-flat-action" type="submit"  value="开始排序" 
+        >开始排序</button>
+    </div>
+
+    <!--商品显示-->
+    <div class="sort_goods">
+      <ul>
+         <li data-sku="1508044703" class="Selected" title="[1508044703] [金狐狸]时尚牛皮通勤手提包 黑色">
+           <a href="http://www.mbaobao.com/item/1508044703" target="_blank"> <i class="iconfont details"></i>
+           </a> <i class="iconfont remove"></i>
+           <img src="http://cdn06.mbbimg.cn/1508/15080447/03/174/01.jpg" width="100" height="100">         
+           <p>
+             998 / <strong style="color: red;">268</strong>
+           </p>
+           <div class="choose"> 
+           </div> 
+           <div class="iconfont hook">
+              &#xe603;
+           </div>          
+           <span class="iconfont add-goods add-left">&#xe606;</span>
+           <span class="iconfont add-goods add-right">&#xe607;</span>  
+         </li>
+         <li data-sku="1508044702" class="nosale" title="[1508044702] [金狐狸]时尚牛皮通勤手提包 粉红">
+           <a href="http://www.mbaobao.com/item/1508044702" target="_blank">
+             <i class="iconfont details"></i>
+           </a>
+           <i class="iconfont remove"></i>
+           <img src="http://cdn06.mbbimg.cn/1508/15080447/02/174/01.jpg" width="100" height="100">         
+           <p>
+             1080 / <strong style="color: red;">268</strong>
+           </p>
+         </li>
+
+         <li data-sku="1508044701" class="nosale" title="[1508044701] [金狐狸]时尚牛皮通勤手提包 浅黄色">
+           <a href="http://www.mbaobao.com/item/1508044701" target="_blank">
+             <i class="iconfont details"></i>
+           </a>
+           <i class="iconfont remove"></i>
+           <img src="http://cdn04.mbbimg.cn/1508/15080447/01/174/01.jpg" width="100" height="100">         
+           <p>
+             998 /
+             <strong style="color: red;">268</strong>
+           </p>
+         </li>
+
+         <li data-sku="1508044802" class="" title="[1508044802] [金狐狸]欧美鳄鱼纹手提单肩斜挎包 玫红">
+           <a href="http://www.mbaobao.com/item/1508044802" target="_blank">
+             <i class="iconfont details"></i>
+           </a>
+           <i class="iconfont remove"></i>
+           <img src="http://cdn05.mbbimg.cn/1508/15080448/02/174/01.jpg" width="100" height="100">         
+           <p>
+             1080 /
+             <strong style="color: red;">299</strong>
+           </p>
+         </li>
+      </ul>
+    </div>
+
+    <!--sku输出-->
+    <div class="sort_skus">
+      <div class="item_bar">
+           <ul>
+             <li class="normal_"><span>灰色</span>正常</li>
+             <li class="presale_"><span>绿色</span>预售</li>
+             <li class="nosale_"><span>红色</span>下架</li>
+           </ul> 
+      </div>
+      <a href="#" id="sku_button" class="button button-rounded button-flat-highlight">结束</a>
+      <textarea id="new_sku"  placeholder="输出SKU"></textarea>
+    </div>
+  </div>
+
+
+
+
+<script id='goods-lists'  type="text/x-handlebars-template">
+{{#useGood_list}}
+<li data-sku="{{sku_id}}" class="{{cssTag}}" title="[{{sku_id}}] {{_name}}">
+  <a href="http://www.mbaobao.com/item/{{sku_id}}" target="_blank"> 
+  <i class="iconfont details">&#xe602</i> 
+  </a>
+  <i class="iconfont remove">&#xe601</i> 
+    <img  src="{{_image}}" width="100" height="100">
+  <p>
+    {{sale_price}} / <strong style="color: red;">{{_price}}</strong>
+  </p>
+  <div class="choose"> 
+  </div> 
+  <div class="iconfont hook">
+              &#xe603;
+   </div>   
+  <span class="iconfont add-goods  add-left">&#xe606;</span>
+  <span class="iconfont add-goods  add-right">&#xe607;</span>  
+</li>
+{{/useGood_list}}
+</script>
+
+
+<script id="sortable" type="text/javascript">
+function sortable(){
+    $('.sort_goods ul').sortable({}).disableSelection();
+}
+</script>
+
+<script type="text/javascript">
+seajs.use("./js/item/mbb-sort.js",function(){
+})  
+</script>
+
+</body>
+</html>
