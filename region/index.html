@@ -1,2 +1,59 @@
-123
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>省市区选择</title>
+</head>
+
+<body>
+
+
+<!--页面打印区-->
+<span id="span_region_linkage" class="span_region"></span>
+<!--页面打印区-->
+
+
+<!--选择条-->
+<!-- <select class="rg-item rg-province" data-type="province" data-first="请选择省份...">
+	<option>请选择省份...</option>
+</select>
+<select class="rg-item rg-city" data-type="city" data-first="请选择城市...">
+	<option class="first-opt">请选择城市...</option>
+</select>
+<select class="rg-item rg-district" data-type="district" data-first="请选择县区...">
+	<option>请选择县区...</option>
+</select> -->
+<!--选择条-->
+
+
+<!--数据保存与提取-->
+<input type="hidden" name="province" id="input_province" value="浙江省">
+<input type="hidden" name="provinceId" id="input_provinceId" value="1">
+<input type="hidden" name="city" id="input_city" value="嘉兴市">
+<input type="hidden" name="cityId" id="input_cityId" value="2">
+<input type="hidden" name="district" id="input_district" value="平湖市">
+<input type="hidden" name="districtId" id="input_districtId" value="3">
+<!--数据保存与提取-->
+
+
 <script type="text/javascript" src="./src/region.js"></script>
+
+
+<script type="text/javascript">
+seajs.use("./src/region.js",function(region){
+     var aa = new region({
+     	 target : "#span_region_linkage",
+	     outputValue : ["input_province","input_city","input_district"],
+	     outputId : ["input_provinceId","input_cityId","input_districtId"]
+     })
+     
+     aa.init();
+
+
+})	
+</script>
+
+
+
+</body>
+</html>
