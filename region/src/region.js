@@ -21,7 +21,7 @@ var Region = function(options){
     
     // 给对象添加事件回调函数
    
-    // self.view.on("123",self.onShowSelect)
+    self.view.on("selected",self.onSelected,self); 
 
     self.model.on("loaded",self.onDataLoaded,self);
     
@@ -34,19 +34,28 @@ Region.prototype.init = function(seletedIds) {
           seletedIds = [null,null,null]; 
        }
 
-       self.view.init();    
+       self.view.init();
 
-       var provinceId = Region.regionState.province["selectedId"] || 1,
-           cityId =  Region.regionState.city["selectedId"] || null,
-           districtId = Region.regionState.district["selectedId"] || null;
+       Region.regionState.province["parentId"] = 1;
+       Region.regionState.city["parentId"] = seletedIds[0] || null;
+       Region.regionState.district["parentId"] = seletedIds[1] || null;
+
+       Region.regionState.province["selectedId"] = seletedIds[0] || null;
+       Region.regionState.city["selectedId"] = seletedIds[1] || null;
+       Region.regionState.district["selectedId"] = seletedIds[2] || null;      
 
 
-       self.model.fetch(provinceId,"province");
-       if(cityId){
-          self.model.fetch(cityId,"city"); 
+       var cityParentId =  Region.regionState.city["parentId"] || null,
+           districtParentId = Region.regionState.district["parentId"] || null;
+
+
+       self.model.fetch(1,"province");
+
+       if(cityParentId){
+          self.model.fetch(cityParentId,"city"); 
        }
-       if(districtId){
-          self.model.fetch(districtId,"district");
+       if(districtParentId){
+          self.model.fetch(districtParentId,"district");
        }
 };
 
@@ -67,20 +76,51 @@ Region.prototype.onDataLoaded = function(type,parentID,list){
            }        	    
        	   simpleList.push(item)
        };
-
-       console.log(123);
-       
-       console.log(self)
       
        self.view.render(type,simpleList)    
+}
+
+Region.prototype.onSelected = function(item){
+       var self = this;
+
+       var type = item.type;    
+       
+       Region.regionState[type].parentId = item.parentId; 
+       Region.regionState[type].selectedId = item.parentId;
+
+       $(Region.defaults.output[type].outId).val(item.postCode)  
+       $(Region.defaults.output[type].outNmae).val(item.name) 
+
+       if( type === "province" ){
+         self.view.reset(["city","district"]);
+         self.model.fetch(item.postCode,"city");  
+       } 
+
+       if( type === "city" ){
+         self.view.reset(["district"]);
+         self.model.fetch(item.postCode,"district");
+       } 
+
 }
 
 
 Region.defaults = {
 	   source : null,
 	   target : ".region",
-	   outputValue : ["input_province","input_city","input_district"],
-	   outputId : ["input_provinceId","input_cityId","input_districtId"]
+	   output : {
+        "province" : {
+             outId : "input_provinceId",
+             outNmae : "input_province"
+        },
+        "city" : {
+             outId : "input_cityId",
+             outNmae : "input_city"
+        },
+        "district" : {
+             outId : "input_districtId",
+             outNmae : "input_district"
+        } 
+     }
 }
 
 Region.regionState = {
