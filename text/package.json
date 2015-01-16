@@ -1,0 +1,26 @@
+{
+  "name": "text",
+  "version": "1.0.0",
+  "description": "text",
+  "keywords": [],
+  "homepage": "",
+  "author": "LuDongWei <weixiaobao5603169@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "index.js",
+    "dependencies": {
+      "region": "1.0.1"
+    },
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    },
+    "buildArgs": "--include standalone"
+  }
+}
