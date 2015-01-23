@@ -14,6 +14,7 @@
 .floor-1{
 	background:url(img/top.jpg)  no-repeat top center;
 	height:700px;
+    position: relative;
 	.bulb-main{
 		position:relative;
 	}
@@ -40,17 +41,26 @@
 	      height:30px;	 
 		}
 	}
+    .bulb-go{
+        position:absolute;
+        display:block;
+        width:100%;
+        height:100%;
+    }
 }
 
 .floor-2{
 	 background-color:#f5f5f5;
+     .bulb-main{
+        position: relative;
+     }
      .f2-pageSlider{
      	   height:801px;
      	   overflow:hidden;
      	 li{
      	   width:980px;
      	   height:801px;
-
+           position:relative;
            .pa-text{
              padding-top: 100px;
              width:600px;
@@ -73,6 +83,12 @@
              font-size:16px;
              line-height:25px;
            }
+           .bulb-go{
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+           }
      	 }
      	 .l-1{
            background:url(img/pp-1.jpg)  no-repeat top center;    
@@ -86,6 +102,26 @@
      	 .l-4{
      	   background:url(img/pp-4.jpg)  no-repeat top center;  	
      	 }
+     }
+     .bx-controls-direction{
+         a{
+             display:block;
+             width:28px;
+             height:85px;
+             font-size:0px;
+             position:absolute;
+             z-index:999;
+             &.bx-prev{
+                 top:360px;
+                 left:0px;
+                 background:url(img/left.png)  no-repeat top center;  
+             }
+             &.bx-next{
+                top:360px;
+                right:0px;
+                background:url(img/right.png)  no-repeat top center;   
+             } 
+         }
      }
 }
 
@@ -128,10 +164,9 @@
          text-align: center;
          color: #fff;
          li{
-            width:25%;
+            width:24.9%;
+            font-size:0px;
             float:left;
-
-            // transition: 0.5s 0s width ease;
 
             .scene-content{
                height:900px;
@@ -157,10 +192,10 @@
                     .mode-text{
                        font-size:14px;
                        line-height:25px;
-                       height:70px;
                     }
                     .mode-sum{
                        font-size:14px; 
+                       line-height:25px
                     }
                }
                .scene-mode{
@@ -171,9 +206,10 @@
                     transition: 0.5s 0.2s all ease; 
                     .scene-icon{
                         display: block;
-                        width: 65px;
-                        height: 65px;
+                        width: 80px;
+                        height: 80px;
                         margin: 0 auto 15px;
+                        background-image:url(img/change/icons-scene.png); 
                     }
                }
 
@@ -192,7 +228,7 @@
                color:#ffffff;
                background:url(img/change/01-m.jpg)  no-repeat 0 0;
                  .scene-icon{
-                    background: url(http://img03.mifile.cn/webfile/images/2014/cn/goods/yeelight/icons-scene.png) no-repeat 0 0;
+                    background-position:0px 0px; 
                  } 
               }
               .selected{
@@ -204,7 +240,7 @@
              color:#000000;
              background:url(img/change/02-m.jpg)  no-repeat 50% 0;
                .scene-icon{
-                  background: url(http://img03.mifile.cn/webfile/images/2014/cn/goods/yeelight/icons-scene.png) no-repeat 0 0;
+                   background-position:-80px 0px; 
                }    
              }
              .selected{
@@ -216,7 +252,7 @@
              color:#000000;
              background:url(img/change/03-m.jpg)  no-repeat 50% 0;
                .scene-icon{
-                  background: url(http://img03.mifile.cn/webfile/images/2014/cn/goods/yeelight/icons-scene.png) no-repeat 0 0;
+                  background-position:0px -80px; 
                }     
              }
              .selected{
@@ -228,7 +264,7 @@
              color:#ffffff;
              background:url(img/change/04-m.jpg)  no-repeat 100% 0;
                  .scene-icon{
-                    background: url(http://img03.mifile.cn/webfile/images/2014/cn/goods/yeelight/icons-scene.png) no-repeat 0 0;
+                    background-position:-80px -80px; 
                  }   
              }
              .selected{
@@ -241,6 +277,7 @@
 .floor-4{
      background:url(img/m.jpg)  no-repeat top center;
      height:600px;
+     position: relative;
      .bulb-main{
 		position:relative;
      }
@@ -259,6 +296,12 @@
          font-size: 26px; 
         }
      }
+         .bulb-go{
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+           }
 }
 
 .floor-5{
@@ -367,6 +410,9 @@
              }
              .b-3{
              	line-height:30px;
+                font-size:16px;
+             }
+             .b-4{
                 font-size:16px;
              }
         } 

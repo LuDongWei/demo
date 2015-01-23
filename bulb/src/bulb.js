@@ -8,7 +8,7 @@ $("#pageSlider").bxSlider({
   mode:'fade',
   auto: true,
   pager: false,
-  controls: false
+  controls: true
 });
 
 
@@ -25,7 +25,7 @@ $(window).on("resize",function(){
 
 })    
 
-$("#scenesList").find("li").on('mouseover',function(){
+$("#scenesList").find("li").on('mouseenter',function(){
 
 		$("#f3Text").hide();
 
@@ -42,7 +42,7 @@ $("#scenesList").find("li").on('mouseover',function(){
 
 
 $("#scenesList").on('mouseleave',function(){
-	  $("#scenesList li").stop(!0, !0).animate({"width":"25%"},400,function(){
+	  $("#scenesList li").stop(!0, !0).animate({"width":"24.9%"},400,function(){
            $("#f3Text").show(); 
 	  });
 	  $("#scenesList li").find(".scene-content").removeClass("selected"); 
