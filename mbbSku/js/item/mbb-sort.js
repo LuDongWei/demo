@@ -161,7 +161,7 @@ define(function(require, exports, module) {
 
     for (var i = 0; i < len; i++) {
       var cssTag = "";
-      //是否下架
+      //是否下架     
       if (!data[i].stock_qty > 0) {
         cssTag = "nosale";
 
@@ -169,6 +169,15 @@ define(function(require, exports, module) {
           continue
         }
       }
+      if(!data[i].is_onsale){
+        cssTag = "nosale";
+
+        if (bb_ && bb_ == 2) {
+          continue
+        }
+      }
+      
+
       //是否预售
       if (data[i].is_presell) {
         cssTag = "presale";
