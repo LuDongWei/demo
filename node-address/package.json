@@ -1,0 +1,7 @@
+{
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.11.1",
+    "mysql": "^2.5.4"
+  }
+}
