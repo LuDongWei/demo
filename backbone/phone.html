@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" href="bootstrap/3.3.1/css/bootstrap.min.css" media="all" />
+</head>
+
+<body>
+
+<style type="text/css">
+body{
+   padding:5px;	
+}
+.fixed-bottom-operate{
+	position:fixed;
+	bottom: 10px;
+    z-index: 10;
+}	
+</style>
+
+<!--电话列表-->
+<div class="panel panel-default">
+	<div class="panel-heading text-center">电话列表</div>
+	<div class="panel-body">
+		<ul class="list-group">
+			<li class="list-group-item active">
+				<div class="row">
+					<div class="name col-xs-4">陆董伟</div>
+					<div class="phone col-xs-8">12345602561</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="name col-xs-4">陆董伟</div>
+					<div class="phone col-xs-8">12345602561</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="name col-xs-4">陆董伟</div>
+					<div class="phone col-xs-8">12345602561</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!--电话列表-->
+
+
+<!--电话添加-->
+<div class="panel panel-primary">
+	<div class="panel-heading text-center">添加</div>
+	<div class="panel-body">
+	  <form class="form-horizontal" role="form">
+	  	<div class="form-group">
+	  		<label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+	  		<div class="col-sm-10">
+	  			<input type="text" class="form-control" id="inputName" placeholder="输入姓名"></div>
+	  	</div>
+	  	<div class="form-group">
+	  		<label for="inputPassword3" class="col-sm-2 control-label">电话</label>
+	  		<div class="col-sm-10">
+	  			<input type="text" class="form-control" id="inputPhone" placeholder="输入电话"></div>
+	  	</div>
+	  	 <div class="form-group">
+	  	 	<div class="col-sm-offset-2 col-sm-10">
+	  	 		<button type="submit" class="btn btn-info">保 存</button>
+	  	 	</div>
+	  	 </div>
+	  </form>
+	</div>
+</div>
+<!--电话添加-->
+
+
+<!--电话修改-->
+<div class="panel panel-info">
+	<div class="panel-heading text-center">修改</div>
+	<div class="panel-body">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="changeName" value="嘎嘎哈"></div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">电话</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="changePhone" value="4545454"></div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-success">修改完成</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<!--电话修改-->
+
+
+<!--弹窗操作-成功-->
+<div class="modal fade request-success" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        	<span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center">操作成功</h4>
+       </div>
+       <div class="modal-body">成功</div>
+    </div>
+  </div>
+</div>
+<!--弹窗操作-成功-->
+
+
+<!--弹窗操作-失败-->
+<div class="modal fade request-failed" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        	<span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center">操作失败</h4>
+       </div>
+       <div class="modal-body">失败</div>
+    </div>
+  </div>
+</div>
+<!--弹窗操作-失败-->
+
+
+<!--操作-->
+<div class="fixed-bottom-operate">
+	<div class="btn-group btn-group-justified" role="group" >
+		<a href="#" class="btn btn-default" role="button">添加</a>
+		<a href="#" class="btn btn-default" role="button">修改</a>
+		<a href="#" class="btn btn-default" role="button">删除</a>
+	</div>
+</div>
+<!--操作-->
+
+
+
+<!--测试-->
+<!-- <button type="button" id="abc" class="btn btn-primary" data-toggle="modal" >Small modal</button> -->
+<!--测试-->
+
+<script type="text/javascript" src="./src/comment.js"></script>
+
+<script type="text/javascript">
+seajs.use("./src/comment.js",function(comment){
+     
+})	
+</script>
+
+</body>
+</html>

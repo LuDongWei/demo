@@ -1,25 +1,41 @@
 //通讯录
-var  $ = require("jquery"),
+var  $ = window.jQuery = window.$ = require("jquery"),
      Backbone = require("backbone"),
-     _ = require("underscore"); 
+     _ = require("underscore");
+     require("bootstrap"); 
 
-var LISTURL = 'http://localhost:8080/get/addressList';
+var  commentModel = require("./commentModel.js"),
+     commentView = require("./commentView.js");  
+     
+var  appComment = Backbone.Router.extend({
+	 routes : {
+	 	'' : 'index',
+        'add' : 'add',
+        'delete/:id' : 'delete',
+        'update/:id' : 'update' 
+	 },
+	 index : function(){
+         console.log(1)
+	 },
+	 add : function(){
+         console.log(2)
+	 },
+	 delete : function(id){
+         console.log(id)
+	 },
+	 update : function(id){
+         console.log(id)
+	 }  
+}) 
 
-var Ajax = function(url, data, callback) {
-          $.ajax({
-               type: "get",
-               url: url,
-               dataType: "jsonp",
-               data: data,
-               success: function(json) {
-                    callback && callback(json);
-               }
-          })
- }
 
- $(function(){
- 	Ajax(LISTURL,{},function(aa){
-         console.log(aa)
- 	}) 
- })
+var commentRouter = new appComment();
+Backbone.history.start();
+
+
+
+
+
+
+
    
