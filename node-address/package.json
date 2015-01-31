@@ -5,6 +5,7 @@
     "mysql": "^2.5.4"
   },
   "devDependencies": {
+    "body-parser": "^1.10.2",
     "cors": "^2.5.3"
   }
 }

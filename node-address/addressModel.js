@@ -42,7 +42,7 @@ Model.prototype.getAddress = function(callback) {
                 message: err0
             }
         } else {
-            data = res0
+            data = res0;
         }
         callback(data)
     })

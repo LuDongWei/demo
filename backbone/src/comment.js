@@ -4,9 +4,12 @@ var  $ = window.jQuery = window.$ = require("jquery"),
      _ = require("underscore");
      require("bootstrap"); 
 
-var  commentModel = require("./commentModel.js"),
-     commentView = require("./commentView.js");  
-     
+var  CommentModel = require("./commentModel.js"),
+     CommentView = require("./commentView.js");  
+
+
+var  commentModel = new CommentModel();
+
 var  appComment = Backbone.Router.extend({
 	 routes : {
 	 	'' : 'index',
@@ -15,7 +18,7 @@ var  appComment = Backbone.Router.extend({
         'update/:id' : 'update' 
 	 },
 	 index : function(){
-         console.log(1)
+         console.log(commentModel)
 	 },
 	 add : function(){
          console.log(2)

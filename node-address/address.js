@@ -1,23 +1,16 @@
 var express = require('express');
 var cors = require('cors');
+var bodyParser = require('body-parser');
+
 var url = require('url');
 var addressModel = require('./addressModel');
 var addressApp = express();
 var router = express.Router();
 
 addressApp.use(cors());
+addressApp.use(bodyParser());
 
 var model = new addressModel(); 
-
-// addressApp.param('/',function(req,res,next,id){
-//        req.item = {
-//        	   id : id ,
-//        	   name : "hah",
-//        	   phone : "1231"
-//        };
-//        next(); 
-// })
-
 
 router.route('/')
 .all(function(req,res,next){
@@ -35,26 +28,17 @@ router.route('/')
 }) 
 .post(function(req,res,next){     //增加
     if (req.method === "POST") {
-        console.log(req.params)
-        console.log(req.body)
-        console.log(req.query)
-        console.log(req.originalUrl)
+    	
+	    var name = req.body.name,
+			phone = req.body.phone;
 
-    	res.jsonp({
-    		return : false
-    	})
-        //console.log(req.body.name)
+		model.addAddress(name, phone, function(data) {
 
-		// var pathname = req.params['0'],
-		// 	name = pathname.split("/")[0],
-		// 	phone = pathname.split("/")[1];
+			if (data) {
+				res.jsonp(data)
+			}
 
-		// model.addAddress(name, phone, function(data) {
-
-		// 	if (data) {
-		// 		res.jsonp(data)
-		// 	}
-		// })
+		})
 	}else{
 	    next(); 	
 	} 
