@@ -16,34 +16,23 @@ var phoneList = Backbone.Collection.extend({
 	url : 'http://localhost:8080/address',
 	initialize : function(){		
 		var self = this;
-
-		self.fetch({
-			success : function(Collection,resp){
-                console.log(self)
-                console.log(resp)
-			}
-		});
+        
+        //是否从服务器那边获取数据
+        self.isPhonelist = false;
 
 	},
-    init : function(){
-        // console.log(this)
-        // console.log(this.models)
-
-
-    },
-    parse : function(a,b){
-    	// console.log(a)
-    	// console.log(b)
+    getPhoneList : function(callback){
+        var self = this;
+        self.fetch({
+             success : function(Collection,resp){
+                   self.isPhonelist = true;
+                   callback(Collection);
+             }
+        })
     }
 })
 
-
 module.exports = phoneList;
-
-phoneList = new phoneList();
-phoneList.fetch();
-
-
 
 
 

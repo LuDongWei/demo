@@ -18,6 +18,9 @@ body{
 	position:fixed;
 	bottom: 10px;
     z-index: 10;
+}
+.phone-list li{
+    cursor: pointer;
 }	
 </style>
 
@@ -32,7 +35,7 @@ body{
 	<div class="panel panel-default">
 		<div class="panel-heading text-center">电话列表</div>
 		<div class="panel-body">
-			<ul class="list-group">
+			<ul class="list-group phone-list">
 				<li class="list-group-item active">
 					<div class="row">
 						<div class="name col-xs-4">陆董伟</div>
@@ -57,14 +60,30 @@ body{
 
 	<div class="fixed-bottom-operate">
 		<div class="btn-group btn-group-justified" role="group" >
-			<a href="#" class="btn btn-default" role="button">添加</a>
-			<a href="#" class="btn btn-default" role="button">修改</a>
-			<a href="#" class="btn btn-default" role="button">删除</a>
+			<a href="javascript:void(0)" id="addPhone" class="btn btn-default" role="button">添加</a>
+			<a href="javascript:void(0)" id="updatePhone" class="btn btn-default" role="button">修改</a>
+			<a href="javascript:void(0)" id="deletePhone" class="btn btn-default" role="button">删除</a>
 		</div>
 	</div>
 </script>
 <!--电话列表-->
 
+<!--没电话列表-->
+<script type="text/template" id="nonePhoneList">  
+	<div class="panel panel-default">
+		<div class="panel-heading text-center">电话列表</div>
+		<div class="panel-body">
+			无电话列表请先添加
+		</div>
+	</div>
+
+	<div class="fixed-bottom-operate">
+		<div class="btn-group btn-group-justified" role="group" >
+			<a href="#" class="btn btn-default" role="button">添加</a>
+		</div>
+	</div>
+</script>
+<!--没电话列表-->
 
 <!--电话添加-->
 <script type="text/template" id="phoneAdd">  

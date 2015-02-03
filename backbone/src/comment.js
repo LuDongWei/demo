@@ -5,10 +5,13 @@ var  $ = window.jQuery = window.$ = require("jquery"),
      require("bootstrap"); 
 
 var  CommentModel = require("./commentModel.js"),
-     CommentView = require("./commentView.js");  
+     CommentView = require("./commentView.js"),
+     EmptyView = require("./emptyView.js");  
 
 
 var  commentModel = new CommentModel();
+
+     // emptyView = new EmptyView();
 
 var  appComment = Backbone.Router.extend({
 	 routes : {
@@ -17,8 +20,32 @@ var  appComment = Backbone.Router.extend({
         'delete/:id' : 'delete',
         'update/:id' : 'update' 
 	 },
+	 initialize : function(){
+        var self = this;
+        
+        self.container = $("#comment-page");
+
+
+	 },
 	 index : function(){
-         console.log(commentModel)
+        var self = this;
+ 
+        if(!commentModel.isPhonelist){
+            commentModel.getPhoneList(function(phoneList){
+               if (phoneList.length) {
+                  //有电话
+                  var commentView = new CommentView({
+                  	  model : phoneList
+                  });
+                  
+                  self.container.empty().append(commentView.el); 
+               }else{
+                  //为空
+                  var emptyView = new EmptyView(); 
+
+               };
+            })
+        }
 	 },
 	 add : function(){
          console.log(2)
