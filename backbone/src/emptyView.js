@@ -4,13 +4,26 @@ var  $ = require("jquery"),
      _ = require("underscore");
 
 var emptyView = Backbone.View.extend({
-	el : '#emptyList',
     template : _.template($('#nonePhoneList').html()),
 	events : {
-
+      'click #addPhone' : 'addPhone'
 	},
 	initialize : function(){
-		console.log(2)
+		var self = this;
+
+		self.render();
+	},
+	render : function(){
+        var self = this;
+
+        self.$el.html(this.template());
+
+        return this; 
+	},
+	addPhone : function(event){
+		var self= this;
+        
+        self.trigger('addphone');  
 	}
 })
 

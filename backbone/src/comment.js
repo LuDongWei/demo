@@ -1,71 +1,110 @@
 //通讯录
-var  $ = window.jQuery = window.$ = require("jquery"),
-     Backbone = require("backbone"),
-     _ = require("underscore");
-     require("bootstrap"); 
+var $ = window.jQuery = window.$ = require("jquery"),
+    Backbone = require("backbone"),
+    _ = require("underscore");        
 
-var  CommentModel = require("./commentModel.js"),
-     CommentView = require("./commentView.js"),
-     EmptyView = require("./emptyView.js");  
-
-
-var  commentModel = new CommentModel();
-
-     // emptyView = new EmptyView();
-
-var  appComment = Backbone.Router.extend({
-	 routes : {
-	 	'' : 'index',
-        'add' : 'add',
-        'delete/:id' : 'delete',
-        'update/:id' : 'update' 
-	 },
-	 initialize : function(){
-        var self = this;
-        
-        self.container = $("#comment-page");
+var CommentCollection = require("./commentCollection.js"),
+  CommentModel = require("./commentModel.js"),
+  CommentView = require("./commentView.js"),
+  EmptyView = require("./emptyView.js"),
+  AddView = require("./addView.js");
 
 
-	 },
-	 index : function(){
-        var self = this;
- 
-        if(!commentModel.isPhonelist){
-            commentModel.getPhoneList(function(phoneList){
-               if (phoneList.length) {
-                  //有电话
-                  var commentView = new CommentView({
-                  	  model : phoneList
-                  });
-                  
-                  self.container.empty().append(commentView.el); 
-               }else{
-                  //为空
-                  var emptyView = new EmptyView(); 
+var commentCollection = new CommentCollection();
 
-               };
-            })
-        }
-	 },
-	 add : function(){
-         console.log(2)
-	 },
-	 delete : function(id){
-         console.log(id)
-	 },
-	 update : function(id){
-         console.log(id)
-	 }  
-}) 
+var utils = require("./utils.js");
+
+var appComment = Backbone.Router.extend({
+  routes: {
+    '': 'index',
+    'add': 'add',
+    'delete/:id': 'delete',
+    'update/:id': 'update'
+  },
+  initialize: function() {
+    var self = this;
+
+    self.container = $("#comment-page");
+
+    commentCollection.on("invalid", function(model, error) {
+      utils.error(error);
+    });
+
+  },
+  index: function() {
+    var self = this;
+
+    if (!commentCollection.isPhonelist) {
+      commentCollection.getPhoneList(function(phoneList) {
+        if (phoneList.length) {
+          //有电话
+          havePhoneList();
+        } else {
+          //为空
+          nonePhoneList();
+        };
+      })
+    } else {
+      havePhoneList();
+    }
+
+    function havePhoneList() {
+      var commentView = new CommentView({
+        model: commentCollection
+      });
+
+      self.container.empty().append(commentView.el);
+
+      commentView.on('addphone', function() {
+        self.navigate('add', {
+          trigger: true,
+          replace: false
+        })
+      })
+
+    }
+
+    function nonePhoneList() {
+      var emptyView = new EmptyView();
+
+      self.container.empty().append(emptyView.el);
+
+      emptyView.on('addphone', function() {
+        setTimeout(function() {     //??为什么需要加setTimeout
+          self.navigate('add', {
+            trigger: true,
+            replace: false
+          })
+        },0)
+      })
+    }
+
+  },
+  add: function() {
+
+    var self = this;
+
+    var addView = new AddView({
+      model: commentCollection
+    });
+
+    self.container.empty().append(addView.el);
+
+    addView.on('addphone', function() {
+      self.navigate('', {
+        trigger: true,
+        replace: false
+      })
+    })
+  },
+  delete: function(id) {
+    console.log(id)
+  },
+  update: function(id) {
+    console.log(id)
+  }
+})
 
 
 var commentRouter = new appComment();
 Backbone.history.start();
-
-
-
-
-
-
-
-   

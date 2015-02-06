@@ -23,13 +23,15 @@ var commentView = Backbone.View.extend({
 
         return this;
 	},
-	addPhone : function(){
-        console.log(1)
+	addPhone : function(event){
+        var self= this;
+        
+        self.trigger('addphone');  
 	},
-	updatePhone : function(){
+	updatePhone : function(event){
         console.log(2) 
 	},
-	deletePhone : function(){
+	deletePhone : function(event){
         console.log(3)
 	},
 	clickPhone : function(event){
