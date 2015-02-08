@@ -12,7 +12,15 @@ addressApp.use(bodyParser());
 
 var model = new addressModel(); 
 
-router.route('/')
+// router.param('address_id',function(req,res,next,id){
+// 	req.address = {
+// 		id : id ,
+// 		name : 'Tj'
+// 	}
+//     next();
+// })
+
+router.route('/*')
 .all(function(req,res,next){
     console.log(req.method)
     next();

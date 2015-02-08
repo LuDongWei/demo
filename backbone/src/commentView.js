@@ -3,6 +3,8 @@ var  $ = require("jquery"),
      Backbone = require("backbone"),
      _ = require("underscore");
 
+var utils = require("./utils.js");         
+
 var commentView = Backbone.View.extend({
 	template: _.template($('#phoneList').html()),
 	events : {
@@ -14,12 +16,19 @@ var commentView = Backbone.View.extend({
 	initialize : function(){
 		var self = this;
         
+        self.selected = null;
+
   		self.render(); 
 	},
 	render : function(){
         var self = this;
 
-        self.$el.html(this.template(this.model.toJSON()));
+        console.log(self.model)
+        console.log(self.model.toJSON())
+
+        var phone = { 'phone' : self.model.toJSON()};
+
+        self.$el.html(this.template(phone));
 
         return this;
 	},
@@ -32,14 +41,24 @@ var commentView = Backbone.View.extend({
         console.log(2) 
 	},
 	deletePhone : function(event){
-        console.log(3)
+        var self = this;
+        
+        if(self.selected){
+           self.model.deletePhone(self.selected,function(){
+           	    self.$el.find(".active").remove(); 
+           })           
+        }else{
+           utils.error('请选中需要删除的号码');
+        }
+
 	},
 	clickPhone : function(event){
+		var self = this;
+
 		$(event.currentTarget).parent().find("li").removeClass('active'); 
         $(event.currentTarget).addClass('active');
-
-		// $(this).addClass('active');
-		// console.log($(this).html())
+        
+        self.selected = $(event.currentTarget).data('id');
 	}
 })
 

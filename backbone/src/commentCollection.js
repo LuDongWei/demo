@@ -3,7 +3,9 @@ var  $ = require("jquery"),
      Backbone = require("backbone"),
      _ = require("underscore");
 
-var phone = require("./commentModel.js")      
+var phone = require("./commentModel.js")  
+
+var utils = require("./utils.js");    
 
 var phoneList = Backbone.Collection.extend({  
 	model : phone,
@@ -14,8 +16,8 @@ var phoneList = Backbone.Collection.extend({
         //是否从服务器那边获取数据
         self.isPhonelist = false;
 
-	},
-    getPhoneList : function(callback){
+	 },
+   getPhoneList : function(callback){
         var self = this;
         self.fetch({
              success : function(Collection,resp){
@@ -26,26 +28,49 @@ var phoneList = Backbone.Collection.extend({
   },
   addPhone : function(name_,phone_,callback){
      var self = this; 
-     
-      self.create({
-        name: name_,
-        phone: phone_
-      }, {
-        success: function() {
-          callback();
+      
+     var  newPhone = new phone({
+          name: name_,
+          phone: phone_
+      });
+
+      console.log(132)
+
+      newPhone.save({
+        success : function(model, response){
+           console.log(model)
+           if(response.return){
+              
+              console.log(model)
+
+              self.add(model);
+            
+              callback();
+           }else{
+              utils.error('未能成功保存出现故障');
+           }
         }
-      })
-
-
-      // self.add({
-      //   name: name_,
-      //   phone: phone_
-      // }) 
-
-      // console.log(self)
+      });
   },
-  deletePhone :function(callback){
-     var self = this;
+  deletePhone :function(id,callback){
+    var self = this;
+
+    console.log(id)
+
+    self.get(id).destroy({
+      success: function(model, response) {
+         if(response.return){
+            utils.success('删除成功',function(){
+               callback();
+            });
+         }else{
+             utils.error('未能成功删除出现故障'); 
+         }
+      }
+    })
+
+    //destroy 参数 wait: true,
+    //self.remove(self.get(id))
   },
   updatePhone : function(callback){
      var self = this; 
