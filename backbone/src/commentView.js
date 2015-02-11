@@ -22,10 +22,7 @@ var commentView = Backbone.View.extend({
 	},
 	render : function(){
         var self = this;
-
-        console.log(self.model)
-        console.log(self.model.toJSON())
-
+  
         var phone = { 'phone' : self.model.toJSON()};
 
         self.$el.html(this.template(phone));
@@ -38,11 +35,18 @@ var commentView = Backbone.View.extend({
         self.trigger('addphone');  
 	},
 	updatePhone : function(event){
-        console.log(2) 
+		var self = this;
+        
+        if(self.selected){
+           self.trigger('updatePhone',self.selected);     
+        }else{
+           utils.error('请选中需要更新的号码');
+        }
+
 	},
 	deletePhone : function(event){
         var self = this;
-        
+       
         if(self.selected){
            self.model.deletePhone(self.selected,function(){
            	    self.$el.find(".active").remove(); 

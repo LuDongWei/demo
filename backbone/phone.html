@@ -29,7 +29,6 @@ body{
 </div>
 <!--内容填写模块-->
 
-
 <!--电话列表-->
 <script type="text/template" id="phoneList">  
 	<div class="panel panel-default">
@@ -37,7 +36,7 @@ body{
 		<div class="panel-body">
 			<ul class="list-group phone-list">
 				<% _.each(phone, function(item) { %> 
-                   <li class="list-group-item" data-id=<%= item.cid %>>
+                   <li class="list-group-item" data-id=<%= item.id %>>
                    	<div class="row">
                    		<div class="name col-xs-4"><%= item.name %></div>
                    		<div class="phone col-xs-8"><%= item.phone %></div>
@@ -112,16 +111,16 @@ body{
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="changeName" value="嘎嘎哈"></div>
+						<input type="text" class="form-control" id="changeName" value="<%= name %>"></div>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword3" class="col-sm-2 control-label">电话</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="changePhone" value="4545454"></div>
+						<input type="text" class="form-control" id="changePhone" value="<%= phone %>"></div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-success">修改完成</button>
+						<button type="submit" id="phoneUp" class="btn btn-success">修改完成</button>
 					</div>
 				</div>
 			</div>

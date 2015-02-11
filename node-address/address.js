@@ -53,10 +53,10 @@ router.route('/*')
 })
 .put(function(req,res,next){      //更新
 	 if (req.method === "PUT") {
-		var pathname = req.params['0'],
-			name = pathname.split("/")[0],
-			phone = pathname.split("/")[1],
-			id = pathname.split("/")[2];
+
+		var name = req.body.name,
+			phone = req.body.phone,
+			id = req.body.id;
 
 		model.updaAddress(name, phone, id, function(data) {
 

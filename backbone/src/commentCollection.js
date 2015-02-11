@@ -3,7 +3,7 @@ var  $ = require("jquery"),
      Backbone = require("backbone"),
      _ = require("underscore");
 
-var phone = require("./commentModel.js")  
+var phone = require("./commentModel.js");  
 
 var utils = require("./utils.js");    
 
@@ -12,50 +12,42 @@ var phoneList = Backbone.Collection.extend({
 	url : 'http://localhost:8080/address',
 	initialize : function(){		
  		var self = this;
-        
-        //是否从服务器那边获取数据
-        self.isPhonelist = false;
-
+      
 	 },
    getPhoneList : function(callback){
         var self = this;
         self.fetch({
              success : function(Collection,resp){
-                   self.isPhonelist = true;
                    callback(Collection);
              }
         })
   },
   addPhone : function(name_,phone_,callback){
      var self = this; 
-      
+    
      var  newPhone = new phone({
           name: name_,
           phone: phone_
-      });
+     });
 
-      console.log(132)
+     newPhone.on("invalid", function(model, error) {
+       
+       utils.error(error);
 
-      newPhone.save({
-        success : function(model, response){
-           console.log(model)
-           if(response.return){
-              
-              console.log(model)
+    });
 
-              self.add(model);
-            
-              callback();
-           }else{
-              utils.error('未能成功保存出现故障');
-           }
+    newPhone.save(null,{
+      success: function(model, response) {
+        if (response.return) {          
+          callback();
+        } else {
+          utils.error('未能成功保存出现故障');
         }
-      });
+      }
+    });
   },
   deletePhone :function(id,callback){
     var self = this;
-
-    console.log(id)
 
     self.get(id).destroy({
       success: function(model, response) {
@@ -72,8 +64,31 @@ var phoneList = Backbone.Collection.extend({
     //destroy 参数 wait: true,
     //self.remove(self.get(id))
   },
-  updatePhone : function(callback){
+  updatePhone : function(id_,newNmae,newPhone,callback){
      var self = this; 
+     
+     var  newPhone = new phone({
+          id : id_,
+          name : newNmae,
+          phone : newPhone
+     });
+
+     newPhone.on("invalid", function(model, error) {
+       
+       utils.error(error);
+
+    });
+
+    newPhone.save(null,{
+      success: function(model, response) {
+        if (response.return) {          
+          callback();
+        } else {
+          utils.error('未能成功保存出现故障');
+        }
+      }
+    }); 
+
   }
 })
 

@@ -24,23 +24,21 @@ var phone = Backbone.Model.extend({
          return '电话为数字组成'
        } 
 
-    },
-    parse : function(response,abc){
-        var self = this;
-
-        console.log(response)
-        console.log(abc)
-
-        var newPhone = {
-            cid : self.cid,
-            id : response.id,
-            name : response.name,
-            phone : response.phone
-        }
-
-        return newPhone
-
     }
+    // parse : function(response,abc){
+    //     var self = this;
+
+    //     console.log(response)
+    //     console.log(abc)
+
+    //     // var newPhone = {
+    //     //     cid : self.cid,
+    //     //     id : response.id,
+    //     //     name : response.name,
+    //     //     phone : response.phone
+    //     // }
+    //     return response
+    // }
 });
 
 module.exports = phone;
