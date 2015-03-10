@@ -24,3 +24,14 @@ mbb商品sku模板生成器
 2014-01-19
 在spm的配置中发现了很多问题也在sf上进行了相关的提问，
 使用了mvc的代码编写规则，希望能在实战中运用。
+
+###bulb
+仿小米灯泡页面
+
+###node-address 与 backbone
+##node-address
+连接mysql服务器，使用RESTful设计接口
+
+##backbonde
+使用spm搭建
+使用backbone进行页面操作的地址管理测试
