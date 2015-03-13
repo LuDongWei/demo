@@ -1,0 +1,30 @@
+{
+  "name": "money",
+  "version": "1.0.0",
+  "description": "manage money",
+  "keywords": [],
+  "homepage": "",
+  "author": "LuDongWei <weixiaobao5603169@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "./src/manage.js",
+    "dependencies": {
+      "underscore": "1.6.0",
+      "jquery": "1.8.3",
+      "backbone": "1.1.2",
+      "expect.js": "0.3.1",
+      "bootstrap": "3.3.1"
+    },
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    },
+    "buildArgs": "--include standalone"
+  }
+}
