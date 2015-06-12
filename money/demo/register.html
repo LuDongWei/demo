@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>注册</title>
+
+<link rel="stylesheet" type="text/css" href="../src/bootstrap/3.3.1/css/bootstrap.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../src/manage.css" media="all"  >
+
+
+<script src="../src/seajs/2.3.0/dist/sea.js"></script>
+
+<script>
+seajs.config({
+  alias: {
+    'jquery': '../src/jquery/1.10.1/jquery.min.js',
+    'global': '../src/global.js'
+  }
+});
+</script>
+
+
+</head>
+
+<body>
+
+<div class="container">
+	<div class="money-register account-page">
+		<div class="mo-intro text-center">
+             <h4><strong>账户注册</strong></h4>
+		</div>
+		<div class="mo-register">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<input type="text" class="form-control" id="changeName" placeholder="name">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" id="changePhone" placeholder="password">
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-6">
+							<input type="text" class="form-control" id="exampleInputName2" placeholder="code">
+						</div>
+						<div class="col-xs-6">
+							<input type="text" class="form-control text-center" id="exampleInputName2" disabled="true " value="4+8=?" >
+						</div>
+					</div>
+				</div>
+				<div class="form-group mo-buttom">
+					<button type="submit" id="phoneUp" class="btn btn-primary btn-block">立即注册</button>
+				</div>
+				<div class="form-group mo-prompt">
+					<h6><small>点击“立即注册”，即表示您同意并愿意遵守本站<a href=""><strong> 用户协议</strong></a> 和 <a href=""><strong> 隐私政策</strong></a></small></h6>
+			    </div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" >
+seajs.use("../src/register.js")	
+</script>
+
+
+</body>
+</html>
