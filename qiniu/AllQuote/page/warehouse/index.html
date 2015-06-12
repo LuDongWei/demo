@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/colorpicker.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/datepicker.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/uniform.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/select2.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/maruti-styleW.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/maruti-media.css" class="skin-color" />
+
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.ui.custom.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.uniform.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap-colorpicker.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap-datepicker.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/select2.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/maruti.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/maruti.form_common.js"></script>
+
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/Static/Publick/TimeContril.js"></script>
+
+</head>
+
+<body style="background:#ffffff;">
+
+
+
+<style>
+
+</style>
+
+
+    <!--仓库地址-->
+    <div class="container-fluid">
+
+        <!--新 仓库 --> 
+        <div class="warehouse">
+           <div class="row-fluid">
+              <div class="form-horizontal">
+                    <div class="widget-box">
+                        <div class="widget-title">
+                            <span class="icon">
+                                <i class="icon-file"></i>
+                            </span>
+                            <h5>波特兰仓库</h5>
+                        </div>
+                        <div class="widget-content">
+                              <div class="row houser-item">
+                                  <div class="col-xs-2 h-label">
+                                      First name：
+                                  </div>
+                                  <div class="col-xs-3">
+                                    <div class="form-group">
+                                     <input type="text" class="form-input" id="boFirstName" value="ZhouZuo" disabled="disabled" >
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boFirstName" title="Click to copy me.">复制</a>
+                                  </div>
+                                  <div class="col-xs-2 h-label">
+                                      Last name：
+                                  </div>
+                                  <div class="col-xs-3">
+                                    <div class="form-group">
+                                     <input type="text" class="form-input" id="boLastName" value="KHRERFB" disabled="disabled" >
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boLastName" title="Click to copy me.">复制</a>
+                                  </div>
+                              </div>
+                              <div class="row houser-item">
+                                  <div class="col-xs-10 col-xs-offset-2">
+                                      <p class="h-warning">
+                                          First Name是通过完善个人账户信息自动生成的，Last Name为系统自动生成的用户代码，是用户身份重要识别标志，请在购物网站填写收货人时务必将FIRST NAME以及LAST NAME填写完整，并用空格分开，如：ZhouZuo KHRERFB。
+                                      </p>
+                                  </div>
+                              </div> 
+                              <div class="row houser-item">
+                                  <div class="col-xs-2 h-label">
+                                      地址(Address)：
+                                  </div>
+                                  <div class="col-xs-9">
+                                      <input type="text" class="form-input" id="boAddress01" value="6804 NE 79th Ct." disabled="disabled" >
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boAddress01" title="Click to copy me.">复制</a>
+                                  </div>
+                              </div>
+                              <div class="row houser-item">
+                                  <div class="col-xs-9 col-xs-offset-2">
+                                      <input type="text" class="form-input" id="boAddress02" value="C/O KHRERFB" disabled="disabled" >
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boAddress02" title="Click to copy me.">复制</a>
+                                  </div>
+                              </div> 
+                              <div class="row houser-item">
+                                  <div class="col-xs-10 col-xs-offset-2">
+                                      <p class="h-warning">
+                                          First Name是通过完善个人账户信息自动生成的，Last Name为系统自动生成的用户代码，是用户身份重要识别标志，请在购物网站填写收货人时务必将FIRST NAME以及LAST NAME填写完整，并用空格分开，如：ZhouZuo KHRERFB。
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="row houser-item">
+                                  <div class="col-xs-2 h-label">
+                                    城市(City)：
+                                  </div>
+                                  <div class="col-xs-3">
+                                    <div class="form-group">
+                                     <input type="text" class="form-input" id="boCity" value="Portland" disabled="disabled" >
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boCity" title="Click to copy me.">复制</a>
+                                  </div>
+                                  <div class="col-xs-2 h-label">
+                                     州(State)：
+                                  </div>
+                                  <div class="col-xs-3">
+                                    <div class="form-group">
+                                     <input type="text" class="form-input" id="boState" value="Oregon" disabled="disabled" >
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boState" title="Click to copy me.">复制</a>
+                                  </div>
+                              </div>
+                              <div class="row houser-item">
+                                  <div class="col-xs-2 h-label">
+                                      县/郡(County)：
+                                  </div>
+                                  <div class="col-xs-3">
+                                    <div class="form-group">
+                                     <input type="text" class="form-input" id="boCounty" value="Multnomah" disabled="disabled" >
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boCounty" title="Click to copy me.">复制</a>
+                                  </div>
+                                  <div class="col-xs-2 h-label">
+                                      国家(Country)：
+                                  </div>
+                                  <div class="col-xs-3">
+                                    <div class="form-group">
+                                     <input type="text" class="form-input" id="boCountry" value="United States" disabled="disabled" >
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boCountry" title="Click to copy me.">复制</a>
+                                  </div>
+                              </div>
+                              <div class="row houser-item">
+                                  <div class="col-xs-2 h-label">
+                                      邮编(PostCode)：
+                                  </div>
+                                  <div class="col-xs-3">
+                                    <div class="form-group">
+                                      <input type="text" class="form-input" id="boPostCode" value="97218-2856" disabled="disabled" >
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boPostCode" title="Click to copy me.">复制</a>
+                                  </div>
+                                  <div class="col-xs-2 h-label">
+                                      电话(Tell)：
+                                  </div>
+                                  <div class="col-xs-3">
+                                    <div class="form-group">
+                                      <input type="text" class="form-input" id="boTell" value="9712022558" disabled="disabled" >
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                     <a href="javaScript:void(0)" class="click-copy" data-clipboard-text="boTell" title="Click to copy me.">复制</a>
+                                  </div>
+                              </div>    
+                        </div>
+                    </div>
+                    <div class="widget-box">
+                        <div class="widget-title">
+                            <span class="icon">
+                                <i class="icon-file"></i>
+                            </span>
+                            <h5>洛杉矶仓库</h5>
+                        </div>
+                        <div class="widget-content">
+                           2
+                        </div>
+                    </div>
+              </div>
+           </div> 
+        </div>
+        <!--新 仓库 -->
+
+<script src="../../plug-js/zeroclipboard/2.2.0/dist/ZeroClipboard.js"></script>
+
+<script src="./warehouse.js"></script>
+
+<script type="text/javascript">
+// var client = new ZeroClipboard(document.getElementById("boTell"));
+
+// client.on("ready", function(readyEvent) {
+//     alert( "ZeroClipboard SWF is ready!" );
+
+//     client.on("aftercopy", function(event) {
+//         // `this` === `client`
+//         // `event.target` === the element that was clicked
+//         event.target.style.display = "none";
+//         alert("Copied text to clipboard: " + event.data["text/plain"]);
+//     });
+// });
+</script>
+
+
+
+
+
+        <div class="row-fluid">
+            <div class="span12">
+                <form action="#" method="get" class="form-horizontal">
+                    <div class="widget-box">
+                        <div class="widget-title">
+                            <span class="icon">
+                                <i class="icon-file"></i>
+                            </span>
+                            <h5>波特兰仓库</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <div class="control-group">
+                                <label class="control-label">
+                                    您的专属收件地址:
+                                    <br>按照右面地址在网站购物</label>
+                                <div class="controls">
+                                    姓名：【您的真实姓名】
+                                    <br>    
+                                    专属地址：6126 NE 112th ave <font color="red">#FLFLY 747097</font>
+                                    Portland, OR  97220
+                                    <br>电话：503-567-9758</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">地址(Address) :</label>
+                                <div class="controls">
+                                    <p>6126 NE 112th ave</p>
+                                    <p>C/O 747097</p>
+                                </div>
+                            </div>
+                            <div class="control-group control-note">
+                                <div class="controls">
+                                    <span class="label label-important">
+                                        一般网站地址栏会有两行，请按此格式填写，确保C/O后的编号能够打印到快递单上
+                                        如果购物时网站不认可收货地址的话请删除C/O字母，保留后面的内容；
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">城市(City) :</label>
+                                <div class="controls">
+                                    <p>Portland</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">州(State) :</label>
+                                <div class="controls">
+                                    <p>OR</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">邮编(Zip code) :</label>
+                                <div class="controls">
+                                    <p>97220</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">电话(Tel) :</label>
+                                <div class="controls">
+                                    <p>503-567-9758</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-box">
+                        <div class="widget-title">
+                            <span class="icon">
+                                <i class="icon-file"></i>
+                            </span>
+                            <h5>洛杉矶仓库</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <div class="control-group">
+                                <label class="control-label">
+                                    您的专属收件地址:
+                                    <br>按照右面地址在网站购物</label>
+                                <div class="controls">
+                                    姓名：【您的真实姓名】
+                                    <br>    
+                                    专属地址：14257 E Don Julian Rd <font color="red">#FLFLY 747097</font>
+                                    City of Industry, CA 91746
+                                    <br>电话：503-567-9758</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">地址(Address) :</label>
+                                <div class="controls">
+                                    <p>14257 E Don Julian Rd</p>
+                                    <p>C/O 747097</p>
+                                </div>
+                            </div>
+                            <div class="control-group control-note">
+                                <div class="controls">
+                                    <span class="label label-important">
+                                        一般网站地址栏会有两行，请按此格式填写，确保C/O后的编号能够打印到快递单上
+                                        如果购物时网站不认可收货地址的话请删除C/O字母，保留后面的内容；
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">城市(City) :</label>
+                                <div class="controls">
+                                    <p>City of Industry</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">州(State) :</label>
+                                <div class="controls">
+                                    <p>CA</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">邮编(Zip code) :</label>
+                                <div class="controls">
+                                    <p>91746</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">电话(Tel) :</label>
+                                <div class="controls">
+                                    <p>503-567-9758</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--仓库地址-->
+
+</body>
+</html>

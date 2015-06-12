@@ -1,0 +1,217 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('http://at.alicdn.com/t/font_1432200418_9866002.eot'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_1432200418_9866002.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_1432200418_9866002.woff') format('woff'), /* chrome、firefox */
+  url('http://at.alicdn.com/t/font_1432200418_9866002.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_1432200418_9866002.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+  font-family:"iconfont";
+  font-size:16px;
+  font-style:normal;
+}
+.package-item .iconfont{
+  font-size:20px;
+}
+.package-category{
+	text-align:center;
+	border: 1px solid #dcdcdc;
+  background-color: #ebebeb;
+  line-height:45px;
+}
+.package-category .back-li{
+    background:url('./img/li_back.png') no-repeat right center;
+}
+.package-item{
+	margin-top:20px;
+  font-size:13px;
+}
+.package-item .table td{
+  border-top:none;
+}
+.package-item .pt-2{
+   overflow:hidden;
+}
+.package-item .pt-1{
+   overflow:hidden;
+}
+.package-item .pt-1 .operation{
+   width:50px;
+   float:right;
+   text-align:right;
+   margin-right:6px;
+}
+.package-item .pt-1 .operation a{
+  text-decoration:none;
+}
+.package-item .pt-2 .operation{
+   width:250px;
+   float:right;
+   text-align:right;
+   margin-right:10px;
+}
+.package-item .pt-3 .operation {
+   margin-right:10px;
+}
+.package-item .pt-2 .operation a,.package-item .pt-4 .operation a{
+  padding-right:10px;
+}
+.package-item .pt-4 .content{
+  width:90%;
+  float:left;
+  text-align:left;
+}
+.package-item .pt-4 .operation{
+  width:5%;
+  float:right;
+  text-align:right;
+}
+.package-item .package-state li:last-child{
+  border-bottom:none;
+}
+.package-item .pt-3 td{
+   text-align:center;
+}
+.package-item .pt-3 .table-inf{
+   border-collapse:separate;
+   border-spacing:1px;
+   background-color:#d7e9c8;
+}
+.package-item .pt-3 .package-goods-list{
+   overflow-y:auto;
+   height:197px;
+}
+.package-item .table-inf td{
+   background-color:#ffffff;
+}
+.package-item .pt-3 td,.package-green .pt-3 th{
+  border-top:none;
+  padding:0px ! important;
+  line-height:38px;
+}
+.package-item ul{
+  list-style:none;
+}
+.package-item .odd-list{
+  margin:0px;
+}
+.package-item .odd-list li{
+  line-height:47px;
+  padding:0 8px;
+  border-bottom:1px solid #d7e9c8;
+  overflow:hidden;
+}
+.package-item .odd-list li:last-child{
+  border-bottom:none;
+}
+.package-item .pt-2  td{
+  padding:0px;
+}
+.package-item .pt-4 td{
+  padding:0px;
+}
+.package-item .pt-4 ul{
+  margin:0px;
+}
+.package-item .pt-3 .receive-address{
+  position:relative;
+}
+.package-item .pt-3 .receive-address:hover .r-address{
+  display:block;
+}
+.package-item .pt-3 .receive-address .r-address{
+   position:absolute;
+   top:-20px;
+   left:10px;
+   display:none;
+   line-height: 16px;
+   width: 250px;
+   background-color: #bdd9a6;
+   border: 1px solid #477a1b;
+   border-radius: 5px; 
+}
+.receive-address .r-address p{
+   margin:0px;
+   padding:4px;
+}
+.package-item .package-state li{
+  line-height:20px;
+  padding:12px 8px;
+  border-bottom:1px solid #d7e9c8;
+  overflow:hidden;
+}
+.package-item .pack-hide{
+  display:none;
+}
+.package-item .in-2{
+  display:none;
+}
+.package-item .package-more{
+  width:16px;
+  height:16px;
+  font-weight:bolder;
+  display:inline-block;
+}
+.package-top .in-1{
+  display:none;
+}
+.package-top .in-2{
+  display:block;
+}
+.package-green .pt-1{
+   background:#bdd9a6;
+   border:1px solid #bdd9a6;
+   color:#477a1b;
+}
+.package-green .pt-1 .state{
+   color: #bf9758;
+}
+.package-green .pt-1 .warning,.package-green .pt-2 .warning{
+   color:#d9534f;
+   margin-left:5px;
+}
+.package-green .pt-1 .warning a,.package-green .pt-2 .warning a{
+   color:#ffffff;
+   background-color:#d9534f;
+   padding:3px;
+   border-radius:3px; 
+   text-decoration:none;
+}
+.package-green .pt-1 a{
+   color:#477a1b;
+   text-decoration:underline;
+   font-weight:bolder;
+}
+.package-green .pt-2{
+   border:1px solid #d7e9c8;
+   background:#dfefd9;
+}
+.package-green .pt-2 .state{
+   color:#bf9758;
+}
+.package-green .pt-2 .serve{
+   color:#666666;
+   text-decoration:underline;
+}
+.package-green .pt-2 td{
+   line-height:30px;
+   color:#666666;
+}
+.package-green .pt-3{
+   display:none;
+   border:1px solid #d7e9c8;
+   height:198px;
+}
+.package-green .pt-3 .table{
+   margin-bottom:0px;
+}
+.package-green .pt-4{
+   background:#dfefd9;
+}
+.package-green .package-state .state{ 
+   color:#bf9758;
+}
+.package-red .pt-1{
+
+}

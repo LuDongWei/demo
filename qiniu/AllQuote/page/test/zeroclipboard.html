@@ -1,0 +1,82 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/colorpicker.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/datepicker.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/uniform.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/select2.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/maruti-styleW.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/maruti-media.css" class="skin-color" />
+
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.ui.custom.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.uniform.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap-colorpicker.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap-datepicker.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/select2.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/maruti.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/maruti.form_common.js"></script>
+
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/Static/Publick/TimeContril.js"></script>
+
+
+</head>
+
+<body style="background:#ffffff;">
+    
+   <!--  <input type="text" value="123456" id="copyabc" /> 
+
+    <button id="copy-button" data-clipboard-target="copyabc" title="Click to copy me.">Copy to Clipboard</button>
+  
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.1.6/ZeroClipboard.min.js"></script>
+    
+
+
+    <script src="main.js"></script>
+    
+    <script>
+       // $(document).ready(function(){
+       //    var client = new ZeroClipboard( document.getElementById("copy-button") );
+
+       //      client.on( "ready", function( readyEvent ) {
+       //       // alert( "ZeroClipboard SWF is ready!" );
+
+       //      client.on( "aftercopy", function( event ) {
+       //        // `this` === `client`
+       //        // `event.target` === the element that was clicked
+       //        event.target.style.display = "none";
+       //      alert("Copied text to clipboard: " + event.data["text/plain"] );
+       //          } );
+       //      } );
+       // })
+    </script>
+ -->
+
+
+
+    <!-- 这里是HTML代码部分 -->
+<textarea id="content" rows="10" cols="60">这里是需要复制的内容</textarea>
+<input id="copy" type="button" data-clipboard-target="content" value="复制">
+
+
+<!-- 这里是JS代码部分 -->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.1.6/ZeroClipboard.min.js" ></script>
+<script type="text/javascript">
+// 将【复制】按钮充当复制数据的元素载体
+var clip = new ZeroClipboard( document.getElementById("copy") );
+</script>
+
+
+
+</body>
+</html>

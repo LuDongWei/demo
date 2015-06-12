@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/colorpicker.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/datepicker.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/uniform.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/select2.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/maruti-styleW.css" />
+    <link rel="stylesheet" href="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/css/maruti-media.css" class="skin-color" />
+
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.ui.custom.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/jquery.uniform.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap-colorpicker.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/bootstrap-datepicker.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/select2.min.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/maruti.js"></script>
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/NewStyle/js/maruti.form_common.js"></script>
+
+    <script src="http://192.168.1.120:89/AllQuote/obstinate/Static/Publick/TimeContril.js"></script>
+
+
+    <!-- 样式 -->
+    <link rel="stylesheet" href="./package.css" />
+</head>
+
+<body style="background:#ffffff;">
+
+    <!-- 包裹列表 --> 
+    <div class="container-fluid">
+        <div class="row-fluid"> 
+           <!--包裹筛选条件-->
+           <form action="/Package/PackageLists" class="form-horizontal" method="post">
+               <input data-val="true" data-val-number="字段 pageNum 必须是一个数字。" data-val-required="The pageNum field is required." id="Seach_pageNum" name="Seach.pageNum" type="hidden" value="1" />           
+               <div class="widget-box">
+                   <div class="widget-title">
+                       <span class="icon"> <i class="icon-align-justify"></i>
+                       </span>
+                       <h5>包裹筛选条件搜索</h5>
+                   </div>
+                   <div class="widget-content nopadding">
+
+                       <div class="control-group">
+                           <label class="control-label">搜索关键字 :</label>
+                           <div class="controls">
+                               <input Class="span20" Placeholder="入库预报单运单号、收货人、手机号、出库发货单号、国内转运单号 多个关键字用空格分开" id="Seach_SeachStr" name="Seach.SeachStr" type="text" value="" />           
+                               <span class="help-block">搜索关键字可以输入：入库预报单运单号、收货人、手机号、出库发货单号、国内转运单号 多个关键字用空格分开</span>
+                           </div>
+                       </div>
+                       <div class="control-group">
+                           <label class="control-label">运单状态 :</label>
+                           <div class="controls ">
+
+                               <button class="btn btn-primary" onclick="$('#shipmentstatus').val('999'); $('#packState').val('999'); $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">全部包裹</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('-1'); $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">可合箱包裹</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('0');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">待接收</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('5');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">已收货</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('1');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">待打包</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('12');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">已打包</button>
+                               <button class="btn" onclick="$('#packState').val('999'); $('#shipmentstatus').val('4'); $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">已发货</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('2'); $('#shipmentstatus').val('999'); $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">已上架</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('3');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">已入库</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('-3'); $('#shipmentstatus').val('999'); $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">申请退货</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('-2');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">成功退货</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('10');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">待认领</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('11');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">待完善明细</button>
+                               <button class="btn" onclick="$('#shipmentstatus').val('999'); $('#packState').val('13');$('#shipmentstatus').val('999');  $('#Seach_pageNum').val('1'); $('#SeachBtn').click()">待用户确认点数与拍照</button>
+                               <input Id="packState" id="Seach_status" name="Seach.status" type="hidden" value="999" />           
+                               <input Id="shipmentstatus" id="Seach_shipmentstatus" name="Seach.shipmentstatus" type="hidden" value="999" />           
+                           </div>
+                       </div>
+
+                       <div class="control-group">
+                           <label class="control-label">单页条数 :</label>
+                           <div class="controls ">
+
+                               <select data-val="true" data-val-number="字段 OnepagelistNum 必须是一个数字。" data-val-required="The OnepagelistNum field is required." id="Seach_OnepagelistNum" name="Seach.OnepagelistNum">
+                                   <option selected="selected" value="10">10</option>
+                                   <option value="30">30</option>
+                                   <option value="50">50</option>
+                               </select>
+                           </div>
+                       </div>
+                       <div class="form-actions">
+                           <input type="submit" value="搜索" id="SeachBtn" class="btn btn-primary" style="display:none" />           
+                           <input type="submit" value="搜索" onclick="$('#Seach_pageNum').val('1');" class="btn btn-primary" />           
+                       </div>
+
+                   </div>
+               </div>
+           </form>     
+           <!--包裹筛选条件-->
+
+
+           <!--包裹列表-->
+           <form action="/Package/GetPre_Shipmentincomepackage" method="post">
+                <input type="submit" value="勾选需要合箱的包裹，并执行发货" id="hbbtn" class="btn btn-primary" />            
+                <!-- 列表 -->
+                <div class="package-box">
+                     <!-- 类目 -->
+                     <div class="row-fluid  package-category">
+                          <div class="col-xs-7">
+                            <div class="row"> 
+                                <div class="col-xs-5 back-li">
+                                  商品名称
+                                </div>
+                                <div class="col-xs-3 back-li">
+                                  申报类别
+                                </div>
+                                <div class="col-xs-2 back-li">
+                                  单价($)
+                                </div>
+                                <div class="col-xs-2 back-li">
+                                  数量
+                                </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div class="row"> 
+                                <div class="col-xs-4 back-li">
+                                  合计/增值服务
+                                </div>
+                                <div class="col-xs-8">
+                                  运费
+                                </div>
+                            </div>    
+                          </div>  
+                     </div>
+                     <!-- 类目 -->
+                      
+                     <!-- 操作 -->
+                     <!-- 操作 -->
+
+                     <!-- 订单 -->
+                        <!--状态 ..-->
+                        <div class="package-item package-green">
+                            <table class="table">
+                                <tr class="pt-1">
+                                    <td>
+                                      目前包裹未合箱 所属仓库：波特兰仓库 更新时间：2015/5/21 18:48:32
+                                      &nbsp;&nbsp;
+                                      <span class="state">收货人: 小王</span>
+                                      <span class="warning">
+                                        [缺钱要充钱]
+                                        <a href="javaScript:void(0)" class="but" target="_blank">充钱</a> 
+                                      </span>
+                                      <div class="operation">
+                                          <a class="op-3 package-more-info" data-more="false"  href="javascript:void(0)" title="更多">
+                                            <i class="iconfont in-1">&#xe60c;</i>
+                                            <i class="iconfont in-2">&#xe612;</i>
+                                          </a>
+                                      </div>
+                                    </td>
+                                </tr>
+                                <tr class="pt-2">
+                                    <td>
+                                        <ul class="odd-list">
+                                          <li>
+                                            <span class="choose"><input type="checkbox" name="packagelist" value="1173" style="opacity: 0;"></span>
+                                            <span class="numbers">单号: SSSSSSDDDDDFFFF</span>
+                                            &nbsp;&nbsp;
+                                            <span class="state">状态: 等待入库</span>
+                                            &nbsp;&nbsp;
+                                            <a class="serve" href="">服务产品：笨鸟标准服务</a>
+                                            &nbsp;&nbsp;
+                                            <span class="warehouse">所属仓库：美国俄勒冈 免税</span>
+                                            <span class="warning">
+                                              [缺钱要充钱]
+                                              <a href="javaScript:void(0)" class="but" target="_blank">充钱</a>
+                                            </span>
+                                            <div class="operation">
+                                              <a class="op-1" href="" title="查看">
+                                                <i class="iconfont">&#xe618;</i></a>
+                                              
+                                              <a class="op-1" href="" title="撤销">
+                                                <i class="iconfont">&#xe616;</i></a>
+                                              
+                                              <a class="op-1" href="" title="认领">
+                                                <i class="iconfont">&#xe617;</i></a>
+                                              
+                                              <a class="op-1" href="" title="取消合箱">
+                                                <i class="iconfont">&#xe614;</i></a>
+                                              
+                                              <a class="op-1" href="" title="申请退货">
+                                                <i class="iconfont">&#xe613;</i></a>
+                                              
+                                              <a class="op-1" href="" title="我要发货">
+                                                <i class="iconfont">&#xe615;</i></a>
+                                              
+                                              <a class="op-1" href="" title="修改">
+                                                <i class="iconfont">&#xe60e;</i></a>
+                                              
+                                              <a class="op-2" href="" title="删除">
+                                                <i class="iconfont">&#xe604;</i></a>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="pt-3">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-xs-7">
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-5">
+
+                                                <table class="table table-inf" >
+                                                   <tr>
+                                                     <th width="33.3%">包裹重量(kg)</th>
+                                                     <td width="33.3%">0.00</td>
+                                                     <th>转运总费用(¥)</th>  
+                                                   </tr>
+                                                   <tr>
+                                                     <th>运费(¥)</th>
+                                                     <td>0.00</td>
+                                                     <td rowspan="2">60.00</td>  
+                                                   </tr>
+                                                   <tr>
+                                                     <th>增值服务</th>
+                                                     <td>60.00</td>
+                                                   </tr>
+                                                   <tr>
+                                                     <th>申报总价值($)</th>
+                                                     <td>34.00</td>
+                                                     <td rowspan="2">0.00</td>  
+                                                   </tr>
+                                                   <tr>
+                                                     <th>关税费用(¥</th>
+                                                     <td>0.00</td>
+                                                   </tr>
+                                                   <tr>
+                                                     <th>收货地址</th>
+                                                     <td colspan="2" >
+                                                       <p>
+                                                          
+                                                       </p>
+                                                     </td>
+                                                   </tr>
+                                                   <tr>
+                                                     <td style="text-align: left;" colspan="3">
+                                                        
+                                                        <span class="receive-address">
+                                                          &nbsp;&nbsp;<a href="" title="修改地址y">
+                                                          <i class="iconfont">&#xe606;</i>&nbsp;收货地址</a>
+
+                                                          <div class="r-address">
+                                                             <p>asdsadasdasd 13456218500 中国 福建省 三明市 清流县 asdasdasdasdasd 111111</p>
+                                                          </div>
+                                                        </span>
+
+                                                     </td>
+                                                   </tr>
+                                                </table>
+                                                
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="pt-4">
+                                   <td>
+                                      <ul class="package-state">
+                                        <li>
+                                           <span class="numbers">快递单号: SSSSSSDDDDDFFFF</span>
+                                            &nbsp;&nbsp;
+                                           <span class="state">状态: 航空</span>
+                                        </li>
+                                      </ul>  
+                                   </td>
+                                </tr>
+                            </table>
+                        </div>                    
+                        <!--状态 ..--> 
+
+                        <!--状态 ..-->
+                        <div class="package-item package-sum package-green">
+                            <table class="table">
+                                <tr class="pt-1">
+                                    <td>
+                                      您的订单：SSSSSSDDDDDFFFF 选择状态是已经合箱，入库后将从帐户余额自动扣除运费并快速出库
+                                      &nbsp;&nbsp;
+                                      <a href="javaScript:void(0)">确认</a>
+                                      &nbsp;&nbsp;
+                                      <a href="javaScript:void(0)">修改</a>
+                                    </td>
+                                </tr>
+                                <tr class="pt-2">
+                                  <td>
+                                    <ul class="odd-list">
+                                      <li>
+                                        <span class="numbers">单号: SSSSSSDDDDDFFFF</span>
+                                        &nbsp;&nbsp;
+                                        <span class="state">状态: 等待入库</span>
+                                        &nbsp;&nbsp;
+                                        <a class="serve" href="">服务产品：笨鸟标准服务</a>
+                                        &nbsp;&nbsp;
+                                        <span class="warehouse">所属仓库：美国俄勒冈 免税</span>
+                                        <div class="operation">
+                                          <a class="op-1" href="" title="修改">
+                                            <i class="iconfont">&#xe60e;</i></a>
+                                          &nbsp;&nbsp;
+                                          <a class="op-2" href="" title="删除">
+                                            <i class="iconfont">&#xe604;</i></a>
+                                          &nbsp;&nbsp;  
+                                          <a class="op-3 package-more" data-more="false"  href="javascript:void(0)" title="更多">
+                                            <i class="iconfont in-1">&#xe60c;</i>
+                                            <i class="iconfont in-2">&#xe612;</i>
+                                          </a>
+                                        </div>
+                                      </li>
+                                      <li class="pack-hide">
+                                        <span class="numbers">单号: SSSSSSDDDDDFFFF</span>
+                                        &nbsp;&nbsp;
+                                        <span class="state">状态: 等待入库</span>
+                                        &nbsp;&nbsp;
+                                        <a class="serve" href="">服务产品：笨鸟标准服务</a>
+                                        &nbsp;&nbsp;
+                                        <span class="warehouse">所属仓库：美国俄勒冈 免税</span>
+                                        <div class="operation">
+                                          <a class="op-1" href="" title="修改">
+                                            <i class="iconfont">&#xe60e;</i></a>
+                                          &nbsp;&nbsp;
+                                          <a class="op-2" href="" title="删除">
+                                            <i class="iconfont">&#xe604;</i></a>
+                                        </div>
+                                      </li>
+                                      <li class="pack-hide">
+                                        <span class="numbers">单号: SSSSSSDDDDDFFFF</span>
+                                        &nbsp;&nbsp;
+                                        <span class="state">状态: 等待入库</span>
+                                        &nbsp;&nbsp;
+                                        <a class="serve" href="">服务产品：笨鸟标准服务</a>
+                                        &nbsp;&nbsp;
+                                        <span class="warehouse">所属仓库：美国俄勒冈 免税</span>
+                                        <div class="operation">
+                                          <a class="op-1" href="" title="修改">
+                                            <i class="iconfont">&#xe60e;</i></a>
+                                          &nbsp;&nbsp;
+                                          <a class="op-2" href="" title="删除">
+                                            <i class="iconfont">&#xe604;</i></a>
+                                        </div>
+                                      </li>
+                                    </ul>  
+                                  </td>
+                                </tr>
+                                <tr class="pt-3">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-xs-7 package-goods-list">
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-5">商品名称</div>
+                                                    <div class="col-xs-3">申报类别</div>
+                                                    <div class="col-xs-2">单价($)</div>
+                                                    <div class="col-xs-2">数量</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-5">
+
+                                                <table class="table table-inf" >
+                                                   <tr>
+                                                     <th width="33.3%">包裹重量(kg)</th>
+                                                     <td width="33.3%">0.00</td>
+                                                     <th>转运总费用(¥)</th>  
+                                                   </tr>
+                                                   <tr>
+                                                     <th>运费(¥)</th>
+                                                     <td>0.00</td>
+                                                     <td rowspan="2">60.00</td>  
+                                                   </tr>
+                                                   <tr>
+                                                     <th>增值服务</th>
+                                                     <td>60.00</td>
+                                                   </tr>
+                                                   <tr>
+                                                     <th>申报总价值($)</th>
+                                                     <td>34.00</td>
+                                                     <td rowspan="2">0.00</td>  
+                                                   </tr>
+                                                   <tr>
+                                                     <th>关税费用(¥</th>
+                                                     <td>0.00</td>
+                                                   </tr>
+                                                   <tr>
+                                                     <td style="text-align: left;" colspan="3">
+                                                        &nbsp;&nbsp;<a href="" title="修改地址y"><img src="./img/iconfont-address.png">&nbsp;修改地址</a></td>
+                                                   </tr>
+                                                </table>
+                                                
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="pt-4">
+                                   <td>
+                                     <ul class="package-state">
+                                        <li>
+                                           <div class="content">
+                                            <span class="numbers">出库运单号: ZY1261222126 [待发货] </span>
+                                             &nbsp;&nbsp;
+                                             <span class="state"> 最新记录: 海关清关完成，转EMS快递，快递单号5122930218903,请到韵达快递追踪后续国内转运情况！ 2015/4/24 10:11:00 </span>
+                                           </div>
+                                           <div class="operation">
+                                             <a class="op-3 package-more" data-more="false"  href="javascript:void(0)" title="更多">
+                                               <i class="iconfont in-1">&#xe60c;</i>
+                                               <i class="iconfont in-2">&#xe612;</i>
+                                             </a>
+                                           </div>
+                                        </li>
+                                        <li class="pack-hide">
+                                           <span class="numbers">快递单号: SSSSSSDDDDDFFFF</span>
+                                            &nbsp;&nbsp;
+                                           <span class="state">状态: 航空</span>
+                                        </li>
+                                        <li class="pack-hide">
+                                           <span class="numbers">快递单号: SSSSSSDDDDDFFFF</span>
+                                            &nbsp;&nbsp;
+                                           <span class="state">状态: 航空</span>
+                                        </li>
+                                      </ul> 
+                                   </td>
+                                </tr>
+                            </table>
+                        </div>                    
+                        <!--状态 ..--> 
+                     <!-- 订单 -->  
+
+                </div>
+                <!-- 列表 -->
+
+                
+                <script src="./package.js"></script>
+
+
+                <div class="widget-box">
+                    <div class="widget-title">
+
+                        <h5>我的包裹管理</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered table-striped with-check">
+                            <thead>
+                                <tr>
+                                    <th> <i class="icon-resize-vertical"></i>
+                                    </th>
+                                    <th>仓库</th>
+                                    <th>入库预报运单号</th>
+                                    <th width="100px">出库发货运单号</th>
+                                    <th>运单重量</th>
+                                    <th>出库发货单状态</th>
+                                    <th>国内转运单号</th>
+                                    <th>收货人</th>
+                                    <th>手机号</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <input type="checkbox" name="packagelist" value="1173" />            
+                                    </td>
+                                    <td rowspan="1" style="border-bottom-width:0px">波特兰仓库</td>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <p>
+                                            <a href="PackageViewMx/1173" title="点击查看该预报单详情" target="_blank" class="tip-bottom">DDDFFFFFFFFF</a>
+                                            [待接收]
+                                        </p>
+                                        <p>
+                                            <a href='/Package/PackageEidt/1173'>修改</a>
+
+                                            <a href='/Package/GetPre_Shipmentincomepackage?packagelist=1173'>我要发货</a>
+                                            <a href='javascript:void(0)' onclick="packInvalid(1173)">作废</a>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom-width: 0px;"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <input type="checkbox" name="packagelist" value="1167" />            
+                                    </td>
+                                    <td rowspan="1" style="border-bottom-width:0px">波特兰仓库</td>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <p>
+                                            <a href="PackageViewMx/1167" title="点击查看该预报单详情" target="_blank" class="tip-bottom">SDSDDDDDD22SS</a>
+                                            [待接收]
+                                        </p>
+                                        <p>
+                                            <a href='/Package/PackageEidt/1167'>修改</a>
+
+                                            <a href='/Package/GetPre_Shipmentincomepackage?packagelist=1167'>我要发货</a>
+                                            <a href='javascript:void(0)' onclick="packInvalid(1167)">作废</a>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom-width: 0px;"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <input type="checkbox" name="packagelist" value="1155" />            
+                                    </td>
+                                    <td rowspan="1" style="border-bottom-width:0px">波特兰仓库</td>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <p>
+                                            <a href="PackageViewMx/1155" title="点击查看该预报单详情" target="_blank" class="tip-bottom">TEST05121000004</a>
+                                            [待接收]
+                                        </p>
+                                        <p>
+                                            <a href='/Package/PackageEidt/1155'>修改</a>
+
+                                            <a href='/Package/GetPre_Shipmentincomepackage?packagelist=1155'>我要发货</a>
+                                            <a href='javascript:void(0)' onclick="packInvalid(1155)">作废</a>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom-width: 0px;"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <input type="checkbox" name="packagelist" value="1137" />            
+                                    </td>
+                                    <td rowspan="1" style="border-bottom-width:0px">波特兰仓库</td>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <p>
+                                            <a href="PackageViewMx/1137" title="点击查看该预报单详情" target="_blank" class="tip-bottom">TEST0512100104</a>
+                                            [待接收]
+                                        </p>
+                                        <p>
+                                            <a href='/Package/PackageEidt/1137'>修改</a>
+
+                                            <a href='/Package/GetPre_Shipmentincomepackage?packagelist=1137'>我要发货</a>
+                                            <a href='javascript:void(0)' onclick="packInvalid(1137)">作废</a>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom-width: 0px;"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <input type="checkbox" name="packagelist" value="1136" />            
+                                    </td>
+                                    <td rowspan="1" style="border-bottom-width:0px">波特兰仓库</td>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <p>
+                                            <a href="PackageViewMx/1136" title="点击查看该预报单详情" target="_blank" class="tip-bottom">TEST0512100103</a>
+                                            [待接收]
+                                        </p>
+                                        <p>
+                                            <a href='/Package/PackageEidt/1136'>修改</a>
+
+                                            <a href='/Package/GetPre_Shipmentincomepackage?packagelist=1136'>我要发货</a>
+                                            <a href='javascript:void(0)' onclick="packInvalid(1136)">作废</a>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom-width: 0px;"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <input type="checkbox" name="packagelist" value="1130" />            
+                                    </td>
+                                    <td rowspan="1" style="border-bottom-width:0px">波特兰仓库</td>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <p>
+                                            <a href="PackageViewMx/1130" title="点击查看该预报单详情" target="_blank" class="tip-bottom">TEST0512100024</a>
+                                            [待接收]
+                                        </p>
+                                        <p>
+                                            <a href='/Package/PackageEidt/1130'>修改</a>
+
+                                            <a href='/Package/GetPre_Shipmentincomepackage?packagelist=1130'>我要发货</a>
+                                            <a href='javascript:void(0)' onclick="packInvalid(1130)">作废</a>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom-width: 0px;"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <input type="checkbox" name="packagelist" value="1074" />            
+                                    </td>
+                                    <td rowspan="1" style="border-bottom-width:0px">纽约</td>
+                                    <td rowspan="1" style="border-bottom-width: 0px">
+                                        <p>
+                                            <a href="PackageViewMx/1074" title="点击查看该预报单详情" target="_blank" class="tip-bottom">TEST0509002</a>
+                                            [已收货]
+                                        </p>
+                                        <p>
+
+                                            <a href='/Package/GetPre_Shipmentincomepackage?packagelist=1074'>我要发货</a>
+                                            <a href="/Package/PackageReturn/1074">申请退货</a>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom-width: 0px;"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px"></td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width: 0px; border-top-width: 0px"></td>
+                                    <td rowspan="1" style="border-bottom-width: 0px; border-top-width: 0px"></td>
+                                    <td rowspan="1" style="border-bottom-width: 0px; border-top-width: 0px">
+                                        <p>
+                                            <a href="/Shipment/ShipmentViewMx_Client/ZY1261222142/-Package-PackageLists" title="点击查看运单详情" target="_blank" class="tip-bottom">TEST0509001</a>
+                                            [已打包]
+                                        </p>
+                                        <p></p>
+                                    </td>
+                                    <td style="border-bottom-width: 0px;  ">
+                                        <a href="/Shipment/ShipmentViewMx_Client/ZY1261222142/-Package-PackageLists" title="点击查看该出库发货单详情" target="_blank" class="tip-bottom">ZY1261222142</a>
+                                        <br/>            
+                                    </td>
+                                    <td style="border-bottom-width: 0px; ">2</td>
+                                    <td style="border-bottom-width: 0px; ">待发货</td>
+                                    <td style="border-bottom-width: 0px; "></td>
+                                    <td style="border-bottom-width: 0px;  ">张三丰</td>
+                                    <td style="border-bottom-width: 0px; ">13333333333</td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width:0px"></td>
+                                    <td rowspan="1" style="border-bottom-width:0px">纽约</td>
+                                    <td rowspan="1" style="border-bottom-width:0px">
+                                        <p>
+                                            <a href="/Shipment/ShipmentViewMx_Client/ZY1261222122/-Package-PackageLists" title="点击查看运单详情" target="_blank" class="tip-bottom">TEST0509003</a>
+                                            [已打包]
+                                        </p>
+                                        <p></p>
+                                    </td>
+                                    <td style="border-bottom-width:0px">
+                                        <a href="/Shipment/ShipmentViewMx_Client/ZY1261222122/-Package-PackageLists" title="点击查看该出库发货单详情" target="_blank" class="tip-bottom">ZY1261222122</a>
+                                        <br />            
+                                    </td>
+                                    <td style="border-bottom-width: 0px; ">1</td>
+                                    <td style="border-bottom-width:0px">待发货</td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px">张三丰</td>
+                                    <td style="border-bottom-width:0px">13333333333</td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" style="border-bottom-width:0px"></td>
+                                    <td rowspan="1" style="border-bottom-width:0px">波特兰仓库</td>
+                                    <td rowspan="1" style="border-bottom-width:0px">
+                                        <p>
+                                            <a href="/Shipment/ShipmentViewMx_Client/ZY1261222140/-Package-PackageLists" title="点击查看运单详情" target="_blank" class="tip-bottom">TEST05121001</a>
+                                            [已打包]
+                                        </p>
+                                        <p></p>
+                                    </td>
+                                    <td style="border-bottom-width:0px">
+                                        <a href="/Shipment/ShipmentViewMx_Client/ZY1261222140/-Package-PackageLists" title="点击查看该出库发货单详情" target="_blank" class="tip-bottom">ZY1261222140</a>
+                                        <br />            
+                                    </td>
+                                    <td style="border-bottom-width: 0px; ">1</td>
+                                    <td style="border-bottom-width:0px">待发货</td>
+                                    <td style="border-bottom-width:0px"></td>
+                                    <td style="border-bottom-width:0px">张三丰</td>
+                                    <td style="border-bottom-width:0px">13333333333</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <ul>
+                        <li>
+                            <a href='javascript:void(0)' title="First Page">« 第一页</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' title="Previous Page">« 上一页</a>
+                        </li>
+                        <!-- Numbered page links -->            
+
+                        <li>
+                            <a href='javascript:void(0)' class="number current" title="1" onclick="$('#Seach_pageNum').val('1');$('#SeachBtn').click();">1</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' class="number" title="2" onclick="$('#Seach_pageNum').val('2');$('#SeachBtn').click();">2</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' class="number" title="3" onclick="$('#Seach_pageNum').val('3');$('#SeachBtn').click();">3</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' class="number" title="4" onclick="$('#Seach_pageNum').val('4');$('#SeachBtn').click();">4</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' class="number" title="5" onclick="$('#Seach_pageNum').val('5');$('#SeachBtn').click();">5</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' class="number" title="6" onclick="$('#Seach_pageNum').val('6');$('#SeachBtn').click();">6</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' class="number" title="7" onclick="$('#Seach_pageNum').val('7');$('#SeachBtn').click();">7</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' class="number" title="8" onclick="$('#Seach_pageNum').val('8');$('#SeachBtn').click();">8</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' class="number" title="9" onclick="$('#Seach_pageNum').val('9');$('#SeachBtn').click();">9</a>
+                        </li>
+                        <!-- Next page link -->            
+                        <li>
+                            <a href='javascript:void(0)' title="Next Page" onclick="$('#Seach_pageNum').val('2');$('#SeachBtn').click();">下一页 »</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0)' title="Last Page" onclick="$('#Seach_pageNum').val(' 9 ');$('#SeachBtn').click();">最后一页 »</a>
+                        </li>
+                        <li class="now-page">当前第1页</li>
+                    </ul>
+                </div>
+            </form>       
+           <!--包裹列表-->
+        </div>
+    </div>    
+    <!-- 包裹列表 --> 
+
+</body>
+</html>

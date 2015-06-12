@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>点赞</title>
+
+    <script id="jquery_183" type="text/javascript" class="library" src="./src/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="./src/jquery-cookie.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="./src/json2.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="./src/av-core-mini-0.5.4.js"></script>
+
+</head>
+
+<body>
+    <style type="text/css">
+body{
+    margin: 0;
+    padding: 0;
+}
+ul{ list-style: none; }
+.main960{
+    width:960px;
+    font-size:0px;
+    margin:0 auto;
+    background-color:#f4f2ec;
+} 
+.praise-list{
+    width:966px;
+    overflow:hidden;
+    padding:0px;
+    margin:0px;
+} 
+.praise-list li{
+    position:relative;
+    width:312px;
+    height:414px;
+    background:url(img/good_back.jpg) no-repeat top center;
+    float: left;
+    margin-bottom:25px;
+    margin-left:6px;
+}
+.praise-list li .good-img{
+    width:254px;
+    height:274px;
+    position:absolute;
+    left:31px;
+    top:48px;
+}
+.praise-list li a.love{
+    display:block;
+    width:107px;
+    height:23px;
+    background:url(img/button.jpg) no-repeat top center;
+    position:absolute;
+    top:350px;
+    left:103px;
+}
+.praise-list li a.on{
+    background:url(img/button_s.jpg) no-repeat top center;
+}
+</style>
+
+    <!--960 商品-->
+    <div class="main960">
+        <a href="http://bulaimei.tmall.com/" target="_blank">
+            <img src="img/top_2.jpg" alt="bromen" width="960" height="145" />
+        </a>
+        <a href="http://bulaimei.tmall.com/p/shangxin.htm?spm=a1z10.1-b.w5001-9133090257.9.vFQCd1&amp;scene=taobao_shop" target="_blank">
+            <img src="img/yyj_01.jpg" alt="参与新品投票，你就说私人订制的主角" width="960" height="236" />
+        </a>
+        <a href="http://bulaimei.tmall.com/p/shangxin.htm?spm=a1z10.1-b.w5001-9133090257.9.vFQCd1&amp;scene=taobao_shop" target="_blank">
+            <img src="img/yyj_02.jpg" alt="参与新品投票，你就说私人订制的主角" width="960" height="237" />
+        </a>
+        <a href="http://bulaimei.tmall.com/p/shangxin.htm?spm=a1z10.1-b.w5001-9133090257.9.vFQCd1&amp;scene=taobao_shop" target="_blank">
+            <img src="img/yyj_03.jpg" alt="参与新品投票，你就说私人订制的主角" width="960" height="236" />
+        </a>
+        <ul class="praise-list" id="praiseList">
+            <li data-id="01">
+                <div class="good-img">
+                    <a href="http://detail.tmall.com/item.htm?spm=a1z10.4-b.w5003-11188418218.4.CeLIF5&amp;id=45740865676&amp;scene=taobao_shop" target="_blank">
+                        <img src="img/01.jpg" alt="bromen" width="254" height="274"></a>
+                </div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="02">
+                <div class="good-img">
+                    <a href="http://detail.tmall.com/item.htm?spm=a1z10.4-b.w5003-11188418218.8.CeLIF5&amp;id=45761996477&amp;scene=taobao_shop" target="_blank">
+                        <img src="img/02.jpg" alt="bromen" width="254" height="274"></a>
+                </div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="03">
+                <div class="good-img">
+                    <a href="http://detail.tmall.com/item.htm?spm=a1z10.4-b.w5003-11188418218.8.CeLIF5&amp;id=45761996477&amp;scene=taobao_shop" target="_blank">
+                        <img src="img/03.jpg" alt="bromen" width="254" height="274"></a>
+                </div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="04">
+                <div class="good-img">
+                    <img src="img/04.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="05">
+                <div class="good-img">
+                    <a href="http://detail.tmall.com/item.htm?spm=a1z10.4-b.w5003-11188418218.14.CeLIF5&amp;id=45694926123&amp;scene=taobao_shop" target="_blank">
+                        <img src="img/05.jpg" alt="bromen" width="254" height="274"></a>
+                </div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="06">
+                <div class="good-img">
+                    <img src="img/06.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="07">
+                <div class="good-img">
+                    <a href="http://detail.tmall.com/item.htm?spm=a1z10.4-b.w5003-11188418218.9.CeLIF5&amp;id=45662011664&amp;scene=taobao_shop" target="_blank">
+                        <img src="img/07.jpg" alt="bromen" width="254" height="274"></a>
+                </div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="08">
+                <div class="good-img">
+                    <img src="img/08.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="09">
+                <div class="good-img">
+                    <img src="img/09.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="10">
+                <div class="good-img">
+                    <img src="img/10.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="11">
+                <div class="good-img">
+                    <a href="http://detail.tmall.com/item.htm?spm=a1z10.4-b.w5003-11188418218.14.CeLIF5&amp;id=45694926123&amp;scene=taobao_shop" target="_blank">
+                        <img src="img/11.jpg" alt="bromen" width="254" height="274"></a>
+                </div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="12">
+                <div class="good-img">
+                    <img src="img/12.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="13">
+                <div class="good-img">
+                    <a href="http://detail.tmall.com/item.htm?spm=a1z10.4-b.w5003-11188418218.9.CeLIF5&amp;id=45662011664&amp;scene=taobao_shop" target="_blank">
+                        <img src="img/13.jpg" alt="bromen" width="254" height="274"></a>
+                </div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="14">
+                <div class="good-img">
+                    <img src="img/14.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="15">
+                <div class="good-img">
+                    <img src="img/15.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="16">
+                <div class="good-img">
+                    <a href="http://detail.tmall.com/item.htm?spm=a1z10.4-b.w5003-11188418218.5.CeLIF5&amp;id=45742457343&amp;scene=taobao_shop" target="_blank">
+                        <img src="img/16.jpg" alt="bromen" width="254" height="274"></a>
+                </div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="17">
+                <div class="good-img">
+                    <img src="img/17.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="18">
+                <div class="good-img">
+                    <img src="img/18.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="19">
+                <div class="good-img">
+                    <img src="img/19.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="20">
+                <div class="good-img">
+                    <img src="img/20.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="21">
+                <div class="good-img">
+                    <img src="img/21.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="22">
+                <div class="good-img">
+                    <img src="img/22.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="23">
+                <div class="good-img">
+                    <img src="img/23.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="24">
+                <div class="good-img">
+                    <img src="img/24.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="25">
+                <div class="good-img">
+                    <img src="img/25.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="26">
+                <div class="good-img">
+                    <img src="img/26.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="27">
+                <div class="good-img">
+                    <img src="img/27.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="28">
+                <div class="good-img">
+                    <img src="img/28.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="29">
+                <div class="good-img">
+                    <img src="img/29.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="30">
+                <div class="good-img">
+                    <img src="img/30.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="31">
+                <div class="good-img">
+                    <img src="img/31.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="32">
+                <div class="good-img">
+                    <img src="img/32.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="33">
+                <div class="good-img">
+                    <img src="img/33.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="34">
+                <div class="good-img">
+                    <img src="img/34.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="35">
+                <div class="good-img">
+                    <img src="img/35.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="36">
+                <div class="good-img">
+                    <img src="img/36.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="37">
+                <div class="good-img">
+                    <img src="img/37.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="38">
+                <div class="good-img">
+                    <img src="img/38.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="39">
+                <div class="good-img">
+                    <img src="img/39.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="40">
+                <div class="good-img">
+                    <img src="img/40.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="41">
+                <div class="good-img">
+                    <img src="img/41.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+            <li data-id="42">
+                <div class="good-img">
+                    <img src="img/42.jpg" alt="bromen" width="254" height="274"></div>
+                <a href="javascript:void(0)" class="love"></a>
+            </li>
+        </ul>
+        <img src="img/buttom.jpg" width="960" height="138"></div>
+
+    <script type="text/javascript" src="./src/praise.js"></script>
+
+</body>
+</html>

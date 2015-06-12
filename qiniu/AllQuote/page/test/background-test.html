@@ -1,0 +1,619 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="flfly.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="http://192.168.1.120:82/AllQuote/obstinate/resources/css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://192.168.1.120:82/AllQuote/obstinate/resources/css/style.css" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="http://192.168.1.120:82/AllQuote/obstinate/resources/css/invalid.css" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="http://192.168.1.120:82/AllQuote/obstinate/resources/css/backstage.css" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="../../plug-css/bootstrap/3.3.4/bootstrap-grid-min.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="http://192.168.1.120:82/AllQuote/plug-js/jquery/1.8.3/jquery-1.8.3.min.js"></script>   
+
+    <script type="text/javascript" src="http://192.168.1.120:82/AllQuote/obstinate/resources/scripts/facebox.js"></script>
+    <script type="text/javascript" src="http://192.168.1.120:82/AllQuote/obstinate/resources/scripts/jquery.wysiwyg.js"></script>
+
+    <script type="text/javascript" src="http://192.168.1.120:82/AllQuote/obstinate/resources/scripts/simpla.jquery.configuration.js"></script>
+
+    <!--<script type="text/javascript" src="http://192.168.1.120:82/AllQuote/obstinate/resources/scripts/jquery.datePicker.js"></script>
+<script type="text/javascript" src="http://192.168.1.120:82/AllQuote/obstinate/resources/scripts/jquery.date.js"></script>
+-->
+<script type="text/javascript" src="http://192.168.1.120:82/AllQuote/obstinate/Static/Publick/TimeContril.js"></script>
+<script src="http://192.168.1.120:82/AllQuote/obstinate/Static/Administrator/script/adminlist.js?v=1"></script>
+
+<script src="http://192.168.1.120:82/AllQuote/obstinate/mod/seajs/sea.js"></script>
+<script src="http://192.168.1.120:82/AllQuote/obstinate/mod/sea-config/sea-config.js"></script>
+</head>
+
+<body style="background-color:#F0F0F0">
+
+<div id="main-content">
+    <h2>欢迎您 xiaowang</h2>
+    <h2>福来国际速递—待发货运单</h2>
+
+    <script src="http://192.168.1.120:82/AllQuote/obstinate/Static/Publick/TimeContril.js"></script>
+
+    <div class="content-box">
+        <div class="content-box-header">
+            <h3>待发货运单</h3>
+            <div class="clear"></div>
+        </div>
+        <div class="content-box-content">
+
+            <!-- 运单 搜索 -->
+            <!-- new -->
+            <div class="default-tab">
+                <div class="search-wrap">
+                    <form action="/Order/WiteSendShipmentList" method="post">
+                        <input data-val="true" data-val-number="字段 pageNum 必须是一个数字。" data-val-required="The pageNum field is required." id="Seach_pageNum" name="Seach.pageNum" type="hidden" value="1" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    转运单单号：
+                                    <input Class="text-input min-small-input" id="Seach_TrackNo" name="Seach.TrackNo" type="text" value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span>时间：</span>
+                                    <span>
+                                        <input Class="text-input min-small-input" OnClick="SelectDate(this,&#39;yyyy-MM-dd&#39;);" id="Seach_StartTime" name="Seach.StartTime" type="text" value="" />
+                                    </span>
+                                    -
+                                    <span>
+                                        <input Class="text-input min-small-input" OnClick="SelectDate(this,&#39;yyyy-MM-dd&#39;);" id="Seach_EndTime" name="Seach.EndTime" type="text" value="" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group bu-search">
+                                    <input type="submit" value="搜索" id="SeachBtn" class="button" style="display:none" />
+                                    <input type="submit" value="搜索" class="button" onclick="$('#Seach_pageNum').val('1');" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- new -->
+            <!-- 运单 搜索 -->
+        </div>
+    </div>
+
+   
+    <div class="content-box">
+        <div class="content-box-header">
+            <h3 style="cursor: s-resize;">总运单列表</h3>
+
+            <div class="clear"></div>
+        </div>
+        <div class="content-box-content">
+
+            <!--总运单 列表-->
+            <div class="default-tab">
+                <div class="search-wrap">
+                    <form action="/Order/ShipmentLists" method="post">
+                        <input data-val="true" data-val-number="字段 pageNum 必须是一个数字。" data-val-required="The pageNum field is required." id="Seach_pageNum" name="Seach.pageNum" type="hidden" value="1">    
+                        <table class="search-wrap-table">
+                            <tbody>
+                                <tr>
+                                    <td>运单用户：</td>
+                                    <td>
+                                        <input class="text-input min-small-input" id="Seach_UserEmail" name="Seach.UserEmail" type="text" value="" style="cursor: auto;"></td>
+                                    <td>收货人：</td>
+                                    <td>
+                                        <input class="text-input min-small-input" id="Seach_GetName" name="Seach.GetName" type="text" value=""></td>
+                                    <td>收货人电话：</td>
+                                    <td>
+                                        <input class="text-input min-small-input" id="Seach_GetPhone" name="Seach.GetPhone" type="text" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>快递单号：</td>
+                                    <td>
+                                        <input class="text-input min-small-input" id="Seach_incomepackNo" name="Seach.incomepackNo" type="text" value=""> 
+                                        &nbsp;&nbsp;  
+                                        <a href="javascript:void(0)" class="prompt-box iconfont"  data-tooltip="(入库单号如：1ZA87E540218093071)">
+                                           &#xe61c; 
+                                        </a>
+                                    </td>
+                                    <td>运单号：</td>
+                                    <td>
+                                        <input class="text-input min-small-input" id="Seach_TrackNo" name="Seach.TrackNo" type="text" value="">    
+                                        &nbsp;&nbsp;  
+                                        <a href="javascript:void(0)" class="prompt-box iconfont"  data-tooltip="(出库运单号如：ZY1261222142)">
+                                           &#xe61c; 
+                                        </a>
+                                    </td>
+                                    <td>运单状态：</td>
+                                    <td>
+                                        <select class="input" id="Seach_status" name="Seach.status">
+                                            <option selected="selected" value="999">全部状态</option>
+                                            <option value="3">已装麻袋</option>
+                                            <option value="0">已打包已付款</option>
+                                            <option value="2">账户余额不足无法发货</option>
+                                            <option value="6">已收货</option>
+                                            <option value="4">已发货</option>
+                                            <option value="5">国内已转运</option>
+                                            <option value="8">关税未支付</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>国内快递公司：</td>
+                                    <td>
+                                        <select class="input" id="Seach_ChinaExpress" name="Seach.ChinaExpress">
+                                            <option selected="selected" value="999">请选择</option>
+                                            <option value="韵达">韵达</option>
+                                            <option value="德邦">德邦</option>
+                                            <option value="申通">申通</option>
+                                            <option value="顺丰">顺丰</option>
+                                            <option value="圆通">圆通</option>
+                                            <option value="EMS">EMS</option>
+                                            <option value="中通">中通</option>
+                                            <option value="汇通">汇通</option>
+                                            <option value="天天">天天</option>
+                                            <option value="宅急送">宅急送</option>
+                                            <option value="大田快递">大田快递</option>
+                                            <option value="华宇">华宇</option>
+                                            <option value="邮政小包">邮政小包</option>
+                                        </select>
+                                    </td>
+                                    <td>国内快递单号：</td>
+                                    <td>
+                                        <input class="text-input min-small-input" id="Seach_ChinaExpressNum" name="Seach.ChinaExpressNum" type="text" value=""></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        时间：
+                                    </td>
+                                    <td colspan="2">
+                                       <span>
+                                            <input class="text-input min-small-input" onclick="SelectDate(this,'yyyy-MM-dd');" id="Seach_StartTime" name="Seach.StartTime" type="text" value=""></span>
+                                        -
+                                        <span>
+                                            <input class="text-input min-small-input" onclick="SelectDate(this,'yyyy-MM-dd');" id="Seach_EndTime" name="Seach.EndTime" type="text" value=""></span>  
+                                    </td>
+                                    <td></td>    
+                                    <td></td>
+                                    <td class="bu-search">
+                                        <input type="submit" value="搜索" id="SeachBtn" class="button" style="display:none">    
+                                        <input type="submit" value="搜索" class="button" onclick="$('#Seach_pageNum').val('1');"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </form>
+                </div>
+
+                <!--列表-->    
+                <div class="list-wrap search-list-wrap">
+                    <table class="goods-lsit">
+                        <thead>
+                            <tr>
+                                <th>用户</th>
+                                <th>运单号</th>
+                                <th>快递运单号</th>
+                                <th>状态</th>
+                                <th>货架号</th>
+                                <th>收件人</th>
+                                <th>创建时间</th>
+                                <th>麻袋号</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="alt-row">
+                                <td align="left">
+                                    <div>470978021@qq.com</div>
+                                    <div>用户编码:747097</div>
+                                    <div>余额：$0.00</div>
+                                </td>
+                                <td>
+                                    <a href="/Order/ShipmentLists/ShipmentViewMx/ZY1261222238/-Order-ShipmentLists" target="_blank">ZY1261222238</a>
+                                </td>
+                                <td></td>
+                                <td>待仓库称重收货</td>
+                                <td></td>
+
+                                <td>asdsadasdasd</td>
+                                <td>2015/5/21 16:40:57</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    <div>233411394@qq.com</div>
+                                    <div>用户编码:723341</div>
+                                    <div>余额：$-366.58</div>
+                                </td>
+                                <td>
+                                    <a href="/Order/ShipmentLists/ShipmentViewMx/ZY1261222237/-Order-ShipmentLists" target="_blank">ZY1261222237</a>
+                                </td>
+                                <td>
+                                    <a href="/Order/ShipmentLists/PackageViewMx_Admin/1107" target="_blank">DR1261222141</a> &nbsp;&nbsp;
+                                    [待接收]
+                                </td>
+                                <td>待仓库称重收货</td>
+                                <td></td>
+
+                                <td>马小云</td>
+                                <td>2015/5/19 20:34:41</td>
+                                <td></td>
+                            </tr>
+                            <tr class="alt-row">
+                                <td align="left">
+                                    <div>470978021@qq.com</div>
+                                    <div>用户编码:747097</div>
+                                    <div>余额：$0.00</div>
+                                </td>
+                                <td>
+                                    <a href="/Order/ShipmentLists/ShipmentViewMx/ZY1261222238/-Order-ShipmentLists" target="_blank">ZY1261222238</a>
+                                </td>
+                                <td></td>
+                                <td>待仓库称重收货</td>
+                                <td></td>
+
+                                <td>asdsadasdasd</td>
+                                <td>2015/5/21 16:40:57</td>
+                                <td></td>
+                            </tr>
+                        </tbody>                     
+                    </table>
+                    
+                    <div class="search-page-site"> 
+                        <p>共103条数据/共11页</p>
+                    </div>
+
+                    <div class="search-page-turning"> 
+                         <div class="pagination">
+                             <!-- Previous page link -->                         
+                             <a href="#" title="First Page">« 第一页</a>
+                             <a href="#" title="Previous Page">« 上一页</a>
+                             <!-- Numbered page links -->                         
+                             <a href="#" class="number current" title="1" onclick="$('#Seach_pageNum').val('1');$('#SeachBtn').click();">1</a>
+                             <a href="#" class="number" title="2" onclick="$('#Seach_pageNum').val('2');$('#SeachBtn').click();">2</a>
+                             <a href="#" class="number" title="3" onclick="$('#Seach_pageNum').val('3');$('#SeachBtn').click();">3</a>
+                             <a href="#" class="number" title="4" onclick="$('#Seach_pageNum').val('4');$('#SeachBtn').click();">4</a>
+                             <a href="#" class="number" title="5" onclick="$('#Seach_pageNum').val('5');$('#SeachBtn').click();">5</a>
+                             <a href="#" class="number" title="6" onclick="$('#Seach_pageNum').val('6');$('#SeachBtn').click();">6</a>
+                             <a href="#" class="number" title="7" onclick="$('#Seach_pageNum').val('7');$('#SeachBtn').click();">7</a>
+                             <a href="#" class="number" title="8" onclick="$('#Seach_pageNum').val('8');$('#SeachBtn').click();">8</a>
+                             <a href="#" class="number" title="9" onclick="$('#Seach_pageNum').val('9');$('#SeachBtn').click();">9</a>
+                             <a href="#" class="number" title="10" onclick="$('#Seach_pageNum').val('10');$('#SeachBtn').click();">10</a>
+                             <a href="#" class="number" title="..." onclick="$('#Seach_pageNum').val('10');$('#SeachBtn').click();">...</a>
+                             <!-- Next page link -->                         
+                             <a href="#" title="Next Page" onclick="$('#Seach_pageNum').val('2');$('#SeachBtn').click();">下一页 »</a>
+                             <a href="#" title="Last Page" onclick="$('#Seach_pageNum').val(' 11 ');$('#SeachBtn').click();">最后一页 »</a>
+                         </div>
+                    </div>
+                </div>
+             </div>
+             <!--总运单 列表--> 
+        </div>
+     </div>
+
+
+     <!--麻袋 列表-->
+     <div class="content-box">
+         <div class="content-box-header">
+             <h3 style="cursor: s-resize;">麻袋列表</h3>
+             <div style="float :right ;height :100%;line-height :40px;margin-right:10px">
+                 <a href="/Order/InSacksList/InSacksAdd/new">添加麻袋</a>
+             </div>
+             <div class="clear"></div>
+         </div>
+         <div class="content-box-content" style="display: block;">
+             <div class="default-tab">
+                 
+                 <!-- 搜索 -->  
+                 <div class="search-wrap">
+                     <form action="/Order/InSacksList" method="post">
+                         <input data-val="true" data-val-number="字段 pageNum 必须是一个数字。" data-val-required="The pageNum field is required." id="Seach_pageNum" name="Seach.pageNum" type="hidden" value="1">     
+                         <table class="search-wrap-table">
+                             <tbody>
+                                 <tr>
+                                    <td>
+                                         航班号：
+                                    </td>
+                                    <td>
+                                         <input class="text-input min-small-input" id="Seach_Flight" name="Seach.Flight" type="text" value=""></td>
+                                     <td>
+                                      航班时间：
+                                     </td>  
+                                     <td colspan="2">
+
+                                             <input class="text-input min-small-input" onclick="SelectDate(this,'yyyy-MM-dd');" id="Seach_StartTime" name="Seach.StartTime" type="text" value="">
+                                         -
+                                         
+                                             <input class="text-input min-small-input" onclick="SelectDate(this,'yyyy-MM-dd');" id="Seach_EndTime" name="Seach.EndTime" type="text" value="">
+                                     </td>
+                                     <td>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                         麻袋号：
+                                     </td>
+                                     <td>
+                                         <input class="text-input min-small-input" id="Seach_SackNo" name="Seach.SackNo" type="text" value=""></td>  
+                                     <td>
+                                         麻袋状态:
+                                     </td>  
+                                     <td>
+                                         <select class="input" id="Seach_status" name="Seach.status">
+                                             <option selected="selected" value="999">全部状态</option>
+                                             <option value="1">已发货麻袋</option>
+                                             <option value="0">待发货麻袋</option>
+                                         </select>
+                                     </td>
+                                      <td>
+                                      </td>
+                                      <td class="bu-search">
+                                         <input type="submit" value="搜索" id="SeachBtn" class="button">
+                                     </td>
+                                  </tr>
+                             </tbody>
+                         </table>
+                     </form>
+                 </div>
+                 <!-- 搜索 --> 
+
+                 <!--列表-->     
+                 <div class="list-wrap search-list-wrap">
+                     <table>
+                         <thead>
+                             <tr>
+                                 <th>麻袋号</th>
+                                 <th>状态</th>
+                                 <th>航班时间</th>
+                                 <th>航班</th>
+                                 <th>航班口岸</th>
+                                 <th>渠道</th>
+                                 <th>创建时间</th>
+                                 <th>操作人</th>
+                                 <th>总重量</th>
+                                 <th>运单数量</th>
+                                 <th>操作</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+                                 <td>MRMD124455472</td>
+                                 <td>待发货麻袋</td>
+                                 <td>2015/5/30</td>
+                                 <td>dasdsadasd</td>
+                                 <td>默认口岸</td>
+                                 <td>小包直邮件(无需身份证,关税自理)</td>
+                                 <td>2015/5/25 15:58:51</td>
+                                 <td>xiaowang</td>
+                                 <td>2</td>
+                                 <td>1</td>
+                                 <td>
+                                     <div class="more-operation">
+                                          <a href="javascript:void(0)" class="more" >更多操作
+                                          </a> 
+                                           <div class="operation-list">
+                                               <a href="/Order/InSacks/ShipmentInSacks/MRMD124455472">运单列表</a>
+                                               <br>                                           
+                                               <a href="javascript:void(0)" onclick="SendSack('MRMD124455472')">发货</a>
+                                               <br>                                           
+                                               <a href="javascript:void(0)" onclick="SackEmpty('MRMD124455472')">麻袋清空</a>
+                                               <br>                                           
+                                               <a href="javascript:void(0)" onclick="SackDel('MRMD124455472')">删除</a>
+                                               <br>                                           
+                                               <a href="/Shipment/ShipmentExport_A/MRMD124455472" target="_blank">A导出</a>
+                                               <br>                                           
+                                               <a href="/Shipment/ShipmentExport/MRMD124455472" target="_blank">运单导出</a>
+                                               <br>                                           
+                                               <a href="/Shipment/ShipmentExport_China/MRMD124455472" target="_blank">国内运单导出</a>
+                                               <br>                                           
+                                               <a href="/Order/ShipmentLogExport/MRMD124455472" target="_blank">运单流程导出</a>
+                                               <br>                                           
+                                               <a href="/Shipment/IDCardExportFromSack/MRMD124455472" target="_blank">运单身份证照片文件导出</a>
+                                           </div>
+                                     </div> 
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td>MRMD124455472</td>
+                                 <td>待发货麻袋</td>
+                                 <td>2015/5/30</td>
+                                 <td>dasdsadasd</td>
+                                 <td>默认口岸</td>
+                                 <td>小包直邮件(无需身份证,关税自理)</td>
+                                 <td>2015/5/25 15:58:51</td>
+                                 <td>xiaowang</td>
+                                 <td>2</td>
+                                 <td>1</td>
+                                 <td>
+                                     <div class="more-operation">
+                                          <a href="javascript:void(0)" class="more" >更多操作
+                                          </a> 
+                                           <div class="operation-list">
+                                               <a href="/Order/InSacks/ShipmentInSacks/MRMD124455472">运单列表</a>
+                                               <br>                                           
+                                               <a href="javascript:void(0)" onclick="SendSack('MRMD124455472')">发货</a>
+                                               <br>                                           
+                                               <a href="javascript:void(0)" onclick="SackEmpty('MRMD124455472')">麻袋清空</a>
+                                               <br>                                           
+                                               <a href="javascript:void(0)" onclick="SackDel('MRMD124455472')">删除</a>
+                                               <br>                                           
+                                               <a href="/Shipment/ShipmentExport_A/MRMD124455472" target="_blank">A导出</a>
+                                               <br>                                           
+                                               <a href="/Shipment/ShipmentExport/MRMD124455472" target="_blank">运单导出</a>
+                                               <br>                                           
+                                               <a href="/Shipment/ShipmentExport_China/MRMD124455472" target="_blank">国内运单导出</a>
+                                               <br>                                           
+                                               <a href="/Order/ShipmentLogExport/MRMD124455472" target="_blank">运单流程导出</a>
+                                               <br>                                           
+                                               <a href="/Shipment/IDCardExportFromSack/MRMD124455472" target="_blank">运单身份证照片文件导出</a>
+                                           </div>
+                                     </div> 
+                                 </td>
+                             </tr>
+                         </tbody>
+                     </table>
+
+                     <div class="search-page-site"> 
+                        <p>共103条数据/共11页</p>
+                    </div>
+
+                    <div class="search-page-turning"> 
+                         <div class="pagination">
+                             <!-- Previous page link -->                         
+                             <a href="#" title="First Page">« 第一页</a>
+                             <a href="#" title="Previous Page">« 上一页</a>
+                             <!-- Numbered page links -->                         
+                             <a href="#" class="number current" title="1" onclick="$('#Seach_pageNum').val('1');$('#SeachBtn').click();">1</a>
+                             <a href="#" class="number" title="2" onclick="$('#Seach_pageNum').val('2');$('#SeachBtn').click();">2</a>
+                             <a href="#" class="number" title="3" onclick="$('#Seach_pageNum').val('3');$('#SeachBtn').click();">3</a>
+                             <a href="#" class="number" title="4" onclick="$('#Seach_pageNum').val('4');$('#SeachBtn').click();">4</a>
+                             <a href="#" class="number" title="5" onclick="$('#Seach_pageNum').val('5');$('#SeachBtn').click();">5</a>
+                             <a href="#" class="number" title="6" onclick="$('#Seach_pageNum').val('6');$('#SeachBtn').click();">6</a>
+                             <a href="#" class="number" title="7" onclick="$('#Seach_pageNum').val('7');$('#SeachBtn').click();">7</a>
+                             <a href="#" class="number" title="8" onclick="$('#Seach_pageNum').val('8');$('#SeachBtn').click();">8</a>
+                             <a href="#" class="number" title="9" onclick="$('#Seach_pageNum').val('9');$('#SeachBtn').click();">9</a>
+                             <a href="#" class="number" title="10" onclick="$('#Seach_pageNum').val('10');$('#SeachBtn').click();">10</a>
+                             <a href="#" class="number" title="..." onclick="$('#Seach_pageNum').val('10');$('#SeachBtn').click();">...</a>
+                             <!-- Next page link -->                         
+                             <a href="#" title="Next Page" onclick="$('#Seach_pageNum').val('2');$('#SeachBtn').click();">下一页 »</a>
+                             <a href="#" title="Last Page" onclick="$('#Seach_pageNum').val(' 11 ');$('#SeachBtn').click();">最后一页 »</a>
+                         </div>
+                    </div>
+                 </div>
+                 <!--列表--> </div>
+         </div>
+      </div>
+     <!--麻袋 列表-->
+
+
+
+
+     <div class="content-box">
+         <div class="content-box-header">
+             <h3 style="cursor: s-resize;">需要点数或者拍照的包裹列表</h3>
+             <div class="clear"></div>
+         </div>
+         <div class="content-box-content">
+             <div class="default-tab">
+                 <form action="/Package/PackageNeedCountNumberOrNeedPic" method="post" _lpchecked="1">
+                     <div class="search-wrap">
+                         <table class="search-wrap-table">
+                             <tbody>
+                                 <tr>
+                                     <td>
+                                       时间：
+                                     </td>
+                                     <td colspan="2">
+                                       <span>
+                                           <input class="text-input min-small-input" onclick="SelectDate(this,'yyyy-MM-dd');" id="Seach_StartTime" name="Seach.StartTime" type="text" value="" style="cursor: auto;"></span>
+                                       -
+                                       <span>
+                                           <input class="text-input min-small-input" onclick="SelectDate(this,'yyyy-MM-dd');" id="Seach_EndTime" name="Seach.EndTime" type="text" value=""></span>
+                                     </td>
+                                     <td>
+                                       快递运单号：
+                                     </td>
+                                     <td>
+                                       <input class="text-input min-small-input" id="Seach_IncomeTrackNo" name="Seach.IncomeTrackNo" type="text" value="">
+                                     </td>
+                                     <td>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                         仓库：
+                                     </td>
+                                     <td>
+                                         <select data-val="true" data-val-number="字段 WareId 必须是一个数字。" data-val-required="The WareId field is required." id="Seach_WareId" name="Seach.WareId">
+                                             <option value="1">波特兰仓库</option>
+                                             <option value="3">纽约</option>
+                                             <option value="2">飞龙仓库</option>
+                                         </select>
+                                     </td>
+                                     <td>
+                                     </td>    
+                                     <td>
+                                         代理：
+                                     </td>
+                                     <td>    
+                                         <select data-val="true" data-val-number="字段 Agentid 必须是一个数字。" data-val-required="The Agentid field is required." id="Seach_Agentid" name="Seach.Agentid">
+                                             <option selected="selected" value="0">福来</option>
+                                             <option value="1">飞龙</option>
+                                         </select>
+                                     </td>
+                                     <td>
+                                        <div class="bu-search">
+                                         <input type="submit" value="搜索" id="SeachBtn" class="button">
+                                        </div>
+                                     </td>
+                                 </tr>
+                             </tbody>
+                         </table>
+
+                     </div>
+                     <input data-val="true" data-val-number="字段 pageNum 必须是一个数字。" data-val-required="The pageNum field is required." id="Seach_pageNum" name="Seach.pageNum" type="hidden" value="1"></form>
+                </div>
+         </div>
+         <!--content-->
+     </div>
+
+
+
+     <div class="notification attention png_bg">
+         <a href="#" class="close">
+             <img src="/AllQuote/obstinate/resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close"></a>
+         <div>运单号/货架条码不能为空！</div>
+     </div>
+
+
+    <!-- big input-box -->  
+    <div class="content-input-box">
+         <form action="/Order/Pre_ShipmentPack" method="post" _lpchecked="1">
+             <div class="input-item"> 
+                 <input class="text-input big-input-text" id="IncomeTrackNo" placeholder="请扫描运单编号" name="IncomeTrackNoNowStr" type="text" value="">  
+             </div>
+             <div class="button-item"> 
+                <input type="submit" value="提交" id="SeachBtn" class="button" onclick="$('#IsSubmint').val('0')"><input type="button" value="清空" class="button" onclick="window.location.href = '/Order/Pre_ShipmentPack'">
+             </div>
+         </form>
+    </div> 
+
+    <div class="content-input-box">
+         <form action="/Order/Pre_ShipmentPack" method="post" _lpchecked="1">
+             <div class="input-item"> 
+                 <input class="text-input big-input-text" id="IncomeTrackNo" placeholder="请扫描运单编号" name="IncomeTrackNoNowStr" type="text" value="">  
+             </div>
+             <div class="input-item"> 
+                 <input class="text-input big-input-text" id="IncomeTrackNo" placeholder="请扫描运单编号" name="IncomeTrackNoNowStr" type="text" value="">  
+             </div>
+             <div class="button-item"> 
+                <input type="submit" value="提交" id="SeachBtn" class="button" onclick="$('#IsSubmint').val('0')"><input type="button" value="清空" class="button" onclick="window.location.href = '/Order/Pre_ShipmentPack'">
+             </div>
+         </form>
+    </div> 
+    <!-- big input-box --> 
+
+
+
+
+
+     
+
+         
+
+     
+
+
+</div>
+
+</body>
+</html>
